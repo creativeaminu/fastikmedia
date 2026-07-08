@@ -22,6 +22,9 @@ export const MUX = [
   "Tr8A4liXfbKJpc02jbrBWH4Y2fpaW2Iark5100zKxjIlU",
 ];
 
+// 16:9 project film (landscape) — "Hype Festival Aftermovie".
+export const PROJECT_HYPE = "oqogXMSca02XLSVYHd4HYWZJB1lQG7zt67Hy74mHccUs";
+
 // The two brand identities shown on the reels.
 export const ID_FASTIK = { handle: "fastikmedia", avatar: "/fastikmedia.jpg" };
 export const ID_AMINU = { handle: "creativeaminu", avatar: "/creativeaminu.jpg" };
@@ -55,7 +58,7 @@ export const HERO = {
   ctaSecondary: "See pricing",
   proofBrands: "100+ personal brands",
   proofRating: "Rated excellent: 5/5",
-  reel: { video: MUX[5], ...ID_AMINU },
+  reel: { video: MUX[0], ...ID_AMINU },
 };
 
 export const INTRO = [
@@ -85,7 +88,7 @@ export const INTRO = [
     body: "If you're showing up, we'll make sure it converts — with short-form content built to scale.",
     reels: [
       {
-        video: MUX[0],
+        video: PROJECT_HYPE,
         ...ID_FASTIK,
         pills: [
           { icon: "heart", text: "200k" },

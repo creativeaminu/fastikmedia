@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BRAND, NAV_LINKS, AVATAR_MAIN } from "@/lib/data";
-import { ShareMark } from "./icons";
 
 /**
  * Fixed full-width nav like the original: logo chip left, links center,
@@ -51,9 +50,14 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="#top" className="flex items-center gap-2.5">
-          <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-[#1c1c1c] text-white shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
-            <ShareMark className="h-4 w-4" />
-          </span>
+          <Image
+            src="/fastik-icon.png"
+            alt={BRAND}
+            width={34}
+            height={34}
+            priority
+            className="h-[34px] w-[34px] rounded-[10px] shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+          />
           <span
             className={`text-[15px] font-semibold tracking-tight transition-colors ${
               overDark ? "text-white" : "text-ink-strong"

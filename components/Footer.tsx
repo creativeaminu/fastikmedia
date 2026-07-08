@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BRAND, FOOTER } from "@/lib/data";
-import { ShareMark } from "./icons";
 
 export default function Footer() {
   return (
@@ -10,9 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="#top" className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-white text-ink-strong">
-                <ShareMark className="h-4.5 w-4.5" />
-              </span>
+              <Image
+                src="/fastik-icon.png"
+                alt={BRAND}
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-[10px]"
+              />
               <span className="text-3xl font-semibold tracking-tight text-white">
                 {BRAND}
               </span>
