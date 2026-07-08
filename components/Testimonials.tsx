@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { PHOTOS, TESTIMONIALS } from "@/lib/data";
+import { AVATAR_MAIN, TESTIMONIALS } from "@/lib/data";
 import AutoVideo from "./AutoVideo";
 import Reveal from "./Reveal";
 import { ProfileRow, SectionHeader } from "./ui";
@@ -41,7 +41,7 @@ export default function Testimonials() {
             className="flex items-center gap-2.5 rounded-full bg-[#1c1c1c] py-2 pl-2 pr-5 text-sm font-medium text-white shadow-[0_10px_28px_rgba(0,0,0,0.28)] transition-all hover:-translate-y-0.5 hover:bg-black"
           >
             <span className="relative h-7 w-7 overflow-hidden rounded-full">
-              <Image src={PHOTOS[3]} alt="" fill sizes="28px" className="object-cover" />
+              <Image src={AVATAR_MAIN} alt="" fill sizes="28px" className="object-cover" />
             </span>
             {TESTIMONIALS.cta}
           </a>
@@ -62,7 +62,7 @@ export default function Testimonials() {
             const isActive = i === active;
             return (
               <button
-                key={t.handle}
+                key={i}
                 onClick={() => setActive(i)}
                 aria-label={`Show testimonial from ${t.handle}`}
                 className={`w-[300px] shrink-0 cursor-pointer text-left transition-all duration-700 ${
@@ -75,7 +75,7 @@ export default function Testimonials() {
                   }`}
                 >
                   <AutoVideo
-                    src={t.video}
+                    id={t.video}
                     className="aspect-[9/16] w-full rounded-[24px] shadow-[0_24px_60px_rgba(0,0,0,0.2)]"
                   />
                   <ProfileRow
@@ -109,9 +109,9 @@ export default function Testimonials() {
 
       {/* Dots */}
       <div className="mt-10 flex justify-center gap-2">
-        {items.map((t, i) => (
+        {items.map((_, i) => (
           <button
-            key={t.handle}
+            key={i}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setActive(i)}
             className={`h-2 rounded-full transition-all duration-300 ${

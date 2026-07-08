@@ -19,7 +19,7 @@ export default function Intro() {
             {/* tall dark reel */}
             <div className="relative z-0 w-[55%]">
               <AutoVideo
-                src={purpose.reels[0].video}
+                id={purpose.reels[0].video}
                 className="aspect-[3/4] w-full rounded-[24px] shadow-[0_24px_60px_rgba(0,0,0,0.22)]"
               />
               <ProfileRow
@@ -37,7 +37,7 @@ export default function Intro() {
             {/* overlapping square reel */}
             <div className="relative z-10 -ml-[10%] mt-16 w-[52%]">
               <AutoVideo
-                src={purpose.reels[1].video}
+                id={purpose.reels[1].video}
                 className="aspect-square w-full rounded-[24px] shadow-[0_24px_60px_rgba(0,0,0,0.22)]"
               />
               <ProfileRow
@@ -83,7 +83,7 @@ export default function Intro() {
 
           <Reveal delay={120} className="relative">
             <AutoVideo
-              src={mission.reels[0].video}
+              id={mission.reels[0].video}
               className="aspect-[16/10] w-full rounded-[28px] shadow-[0_24px_60px_rgba(0,0,0,0.22)]"
             />
             <ProfileRow

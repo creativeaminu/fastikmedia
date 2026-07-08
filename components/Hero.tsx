@@ -113,7 +113,7 @@ export default function Hero() {
         <Reveal delay={150} className="relative mx-auto w-full max-w-[330px]">
           <div className="relative">
             <AutoVideo
-              src={HERO.reel.video}
+              id={HERO.reel.video}
               className="aspect-[9/16] w-full rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.25)]"
             />
             <ProfileRow

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PHOTOS, PRICING } from "@/lib/data";
+import { AVATAR_MAIN, PRICING } from "@/lib/data";
 import Reveal from "./Reveal";
 import { Container, SectionHeader } from "./ui";
 
@@ -58,7 +58,7 @@ export default function Pricing() {
                 >
                   {plan.featured && (
                     <span className="relative h-7 w-7 overflow-hidden rounded-full">
-                      <Image src={PHOTOS[3]} alt="" fill sizes="28px" className="object-cover" />
+                      <Image src={AVATAR_MAIN} alt="" fill sizes="28px" className="object-cover" />
                     </span>
                   )}
                   {plan.cta}

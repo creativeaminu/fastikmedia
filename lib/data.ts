@@ -1,30 +1,33 @@
-// All copy + assets for the Fastik Media site (design recreated from the
-// Influence template). Media is served from Framer's CDN — swap for your own.
+// All copy + assets for the Fastik Media site.
+// Reels are the studio's own short-form work, streamed from Mux (HLS).
 
 export const BRAND = "Fastik Media";
 
-const V = (id: string) => `https://framerusercontent.com/assets/${id}.mp4`;
 const P = (id: string) => `https://framerusercontent.com/images/${id}`;
 
-export const VIDEOS = [
-  V("8IDs730LgJJaXwQX45zXB4WKBrY"),
-  V("DXWg7xZQ9FVGADXcu1YyaoKGc"),
-  V("EsKprNy4lLQLqGnbpg4HT6afA"),
-  V("FyNgFnzyD13liJpZHSDMJSZiTg8"),
-  V("IJoHNEhGHa15Gjh9glBhm3F8WU"),
-  V("MqddaZ5QXlptJ1kJtgoyZ632Uio"),
-  V("N21R1I2PRXv0rrtAxuzrB3nvAc"),
-  V("OFxzR4yy3x6AYpc0q71bZHaoVA"),
-  V("V7aP7uEYVIsBmXzinc531yfJCo"),
-  V("ZSMEgzYL0TQGQtdoqNwBam9s"),
-  V("a6582eMC3cParhpqJcnNnY8lfU"),
-  V("aHW6q1zW5Gmge8w8jaaI53hMQ"),
-  V("aolyzPNCcyoHRIwk3hhn5WK7s"),
-  V("fGyGI2nAP1W87RVd3FxemLXwCg"),
-  V("fuVrP45UYEBoOfcLoix1DwuHo"),
-  V("swmKztexhyaw6JwBYijJOmfQg"),
+// Mux playback ids for the reel library (9:16 short-form content).
+export const MUX = [
+  "3gHFTGibhrWz0200c33cmmbFkUCkSDKYt73uOI8pWXmEM",
+  "zaLJurukzYAVk3EP3IWMZ009w1Y3z3wrwGeaRCfY6Hr00",
+  "3PCs00a00oQ7Fao2Q0002F7sqEq69iB5e7J3ALNLJ00yFBgo",
+  "c00aAqj2MmBGo019uaGg6VIvqsGIx01fYmekI00O2o301zpM",
+  "02UpXXHCPIva9qSIIPqTpvmhG7FU52cdnO6zSkjgOcyo",
+  "zcpvF01Td01LUIEElWOjHRF901Y892Zc25nFkR02ppQHJNM",
+  "P6NK63fU6zoGHV74SPcp00Ivmm36I00EtWrhkENCEc01v8",
+  "KEiqmhZdQzr4ZI0202uKxQiQX1zjuWjrIji1ZJkZ8bkJ8",
+  "02fum7012DrmikrvfgwuX5FjMAVlFS3nB7ltZumRCT9PI",
+  "raeoF2iQCqKs5dFZwbLy01EDnFuKs00bY00Fmcn6k5Uo3o",
+  "89BlI01bPAh02sK4DgusO6I9FOgnXxkJdLYdMEa7JqLYE",
+  "L8M8w9fa400NL3nUw02dym6bA5iFkJDMZE7ya5y02SRSk8",
+  "Tr8A4liXfbKJpc02jbrBWH4Y2fpaW2Iark5100zKxjIlU",
 ];
 
+// The two brand identities shown on the reels.
+export const ID_FASTIK = { handle: "fastikmedia", avatar: "/fastikmedia.jpg" };
+export const ID_AMINU = { handle: "creativeaminu", avatar: "/creativeaminu.jpg" };
+export const AVATAR_MAIN = "/creativeaminu.jpg";
+
+// Still photos used for editorial thumbnails / decorative avatar stacks.
 export const PHOTOS = [
   P("0K9wahDgmpQCidXcEUCpRBJ7sWw.jpg"),
   P("2CBydzAi5aIjb2ShPxPHPp1qI.jpg"),
@@ -52,7 +55,7 @@ export const HERO = {
   ctaSecondary: "See pricing",
   proofBrands: "100+ personal brands",
   proofRating: "Rated excellent: 5/5",
-  reel: { video: VIDEOS[5], handle: "sasha_", avatar: PHOTOS[0] },
+  reel: { video: MUX[5], ...ID_AMINU },
 };
 
 export const INTRO = [
@@ -62,18 +65,16 @@ export const INTRO = [
     body: "We blend aesthetics with performance to help you turn views into real business outcomes.",
     reels: [
       {
-        video: VIDEOS[3],
-        handle: "zaratalks",
-        avatar: PHOTOS[1],
+        video: MUX[3],
+        ...ID_FASTIK,
         pills: [
           { icon: "user", text: "5k follower growth" },
           { icon: "chart", text: "6.1% conversion" },
         ],
       },
       {
-        video: VIDEOS[8],
-        handle: "travelwithmia",
-        avatar: PHOTOS[2],
+        video: MUX[8],
+        ...ID_AMINU,
         pills: [{ icon: "link", text: "Link clicks" }],
       },
     ],
@@ -84,9 +85,8 @@ export const INTRO = [
     body: "If you're showing up, we'll make sure it converts — with short-form content built to scale.",
     reels: [
       {
-        video: VIDEOS[13],
-        handle: "_jason",
-        avatar: PHOTOS[3],
+        video: MUX[0],
+        ...ID_FASTIK,
         pills: [
           { icon: "heart", text: "200k" },
           { icon: "user", text: "1.9k profile clicks" },
@@ -100,12 +100,12 @@ export const PROJECTS = {
   title: "Where strategy meets scroll-stopping content.",
   sub: "A curated look at how we turned raw footage into viral-worthy moments — and real audience growth.",
   items: [
-    { video: VIDEOS[0], handle: "kia_dances", avatar: PHOTOS[4] },
-    { video: VIDEOS[1], handle: "sarah_rides", avatar: PHOTOS[5] },
-    { video: VIDEOS[2], handle: "tennis_tips", avatar: PHOTOS[6] },
-    { video: VIDEOS[6], handle: "business_chats", avatar: PHOTOS[7] },
-    { video: VIDEOS[7], handle: "golf_with_jess", avatar: PHOTOS[8] },
-    { video: VIDEOS[10], handle: "zoe_gardens", avatar: PHOTOS[9] },
+    { video: MUX[1], ...ID_FASTIK },
+    { video: MUX[2], ...ID_AMINU },
+    { video: MUX[6], ...ID_FASTIK },
+    { video: MUX[7], ...ID_AMINU },
+    { video: MUX[9], ...ID_FASTIK },
+    { video: MUX[10], ...ID_AMINU },
   ],
 };
 
@@ -115,9 +115,8 @@ export const TESTIMONIALS = {
   cta: "Book a 15-min call",
   items: [
     {
-      video: VIDEOS[11],
-      handle: "Samuel_",
-      avatar: PHOTOS[0],
+      video: MUX[11],
+      ...ID_FASTIK,
       stats: [
         { text: "5k follower growth", dark: true },
         { text: "6.1% conversion" },
@@ -126,9 +125,8 @@ export const TESTIMONIALS = {
       ],
     },
     {
-      video: VIDEOS[12],
-      handle: "Tom_Finance",
-      avatar: PHOTOS[3],
+      video: MUX[12],
+      ...ID_AMINU,
       stats: [
         { text: "4k follower growth", dark: true },
         { text: "5.3% conversion" },
@@ -137,9 +135,8 @@ export const TESTIMONIALS = {
       ],
     },
     {
-      video: VIDEOS[14],
-      handle: "_kenny",
-      avatar: PHOTOS[7],
+      video: MUX[4],
+      ...ID_FASTIK,
       stats: [
         { text: "5.8k follower growth", dark: true },
         { text: "6.8% conversion" },
@@ -148,9 +145,8 @@ export const TESTIMONIALS = {
       ],
     },
     {
-      video: VIDEOS[15],
-      handle: "Jessica_Estates",
-      avatar: PHOTOS[2],
+      video: MUX[2],
+      ...ID_AMINU,
       stats: [
         { text: "3k follower growth", dark: true },
         { text: "4.9% conversion" },
@@ -159,9 +155,8 @@ export const TESTIMONIALS = {
       ],
     },
     {
-      video: VIDEOS[4],
-      handle: "investing_with_jon",
-      avatar: PHOTOS[8],
+      video: MUX[8],
+      ...ID_FASTIK,
       stats: [
         { text: "2k follower growth", dark: true },
         { text: "6.3% conversion" },
@@ -349,9 +344,9 @@ export const CTA = {
   title: "Your profile growth is only a few edits away.",
   button: "Get started today",
   reels: [
-    { video: VIDEOS[9], handle: "skin_glow", avatar: PHOTOS[5] },
-    { video: VIDEOS[5], handle: "sasha_dances", avatar: PHOTOS[0] },
-    { video: VIDEOS[0], handle: "MikeCooks", avatar: PHOTOS[9] },
+    { video: MUX[9], ...ID_FASTIK },
+    { video: MUX[5], ...ID_AMINU },
+    { video: MUX[0], ...ID_FASTIK },
   ],
 };
 

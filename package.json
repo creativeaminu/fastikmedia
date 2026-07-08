@@ -1,5 +1,5 @@
 {
-  "name": "influence-clone",
+  "name": "fastik-media",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "hls.js": "^1.6.16",
     "next": "^15.5.20",
     "react": "19.0.0",
     "react-dom": "19.0.0"

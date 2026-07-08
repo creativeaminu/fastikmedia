@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 
 /**
  * Scroll-reveal wrapper: fades + slides children up once they enter the
- * viewport, mimicking Framer's appear effects.
+ * viewport, for subtle scroll-in appear effects.
  */
 export default function Reveal({
   children,

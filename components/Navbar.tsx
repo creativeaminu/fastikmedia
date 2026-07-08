@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BRAND, NAV_LINKS, PHOTOS } from "@/lib/data";
+import { BRAND, NAV_LINKS, AVATAR_MAIN } from "@/lib/data";
 import { ShareMark } from "./icons";
 
 /**
@@ -41,8 +41,14 @@ export default function Navbar() {
     : "text-ink hover:text-ink-strong";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto flex h-[76px] w-full max-w-[1180px] items-center justify-between px-5 sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3.5">
+      <nav
+        className={`mx-auto flex h-[64px] w-full max-w-[1180px] items-center justify-between rounded-full border px-4 pl-5 backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 sm:px-5 ${
+          overDark
+            ? "border-white/10 bg-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
+            : "border-black/[0.06] bg-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+        }`}
+      >
         {/* Logo */}
         <Link href="#top" className="flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-[#1c1c1c] text-white shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
@@ -81,7 +87,7 @@ export default function Navbar() {
             }`}
           >
             <span className="relative h-7 w-7 overflow-hidden rounded-full">
-              <Image src={PHOTOS[3]} alt="" fill sizes="28px" className="object-cover" />
+              <Image src={AVATAR_MAIN} alt="" fill sizes="28px" className="object-cover" />
             </span>
             Book a call
           </Link>

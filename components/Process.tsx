@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { PHOTOS, PROCESS } from "@/lib/data";
+import { AVATAR_MAIN, BRAND, PROCESS } from "@/lib/data";
 import Reveal from "./Reveal";
 import { FolderUploadIcon, PhoneIcon } from "./icons";
 import { Container, SectionHeader } from "./ui";
@@ -10,9 +10,9 @@ function CallVisual() {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-4">
       <span className="relative h-16 w-16 overflow-hidden rounded-full ring-4 ring-white/10">
-        <Image src={PHOTOS[3]} alt="" fill sizes="64px" className="object-cover" />
+        <Image src={AVATAR_MAIN} alt="" fill sizes="64px" className="object-cover" />
       </span>
-      <p className="text-sm font-medium text-white">Kickoff with {`Fastik Media`}</p>
+      <p className="text-sm font-medium text-white">Kickoff with {BRAND}</p>
       <span className="mono-label text-dark-muted">00:12:34</span>
       <span className="grid h-11 w-11 place-items-center rounded-full bg-[#33d478]">
         <PhoneIcon className="h-5 w-5 text-white" />

@@ -17,9 +17,9 @@ export default function Projects() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.items.map((p, i) => (
-            <Reveal key={p.handle} delay={(i % 3) * 100}>
+            <Reveal key={i} delay={(i % 3) * 100}>
               <article className="group relative overflow-hidden rounded-[24px] shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:-translate-y-1.5">
-                <AutoVideo src={p.video} className="aspect-[3/4] w-full" />
+                <AutoVideo id={p.video} className="aspect-[3/4] w-full" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/70 to-transparent" />
                 <ProfileRow
                   handle={p.handle}

@@ -45,10 +45,7 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {BRAND}. All rights reserved.
           </p>
-          <p>
-            Design based on the Influence template by Ramish Aziz · Rebuilt
-            with Next.js
-          </p>
+          <p>Short-form content that builds real influence.</p>
         </div>
       </div>
     </footer>

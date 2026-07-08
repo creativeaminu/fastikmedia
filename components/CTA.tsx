@@ -28,13 +28,13 @@ export default function CtaSection() {
         <div className="mx-auto mt-16 flex max-w-[820px] items-start justify-center gap-0 px-5">
           {CTA.reels.map((r, i) => (
             <div
-              key={r.handle}
+              key={i}
               className={`relative w-1/3 min-w-[220px] ${
                 i === 1 ? "z-10 -mx-6 mt-8" : "mt-0"
               }`}
             >
               <AutoVideo
-                src={r.video}
+                id={r.video}
                 className={`aspect-[9/16] w-full rounded-[24px] ${
                   i === 1
                     ? "shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
