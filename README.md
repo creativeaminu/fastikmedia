@@ -1,10 +1,7 @@
 # Fastik Media
 
 A short-form content agency landing page built with **Next.js 15 (App
-Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**. Design
-recreated at high fidelity from the
-[Influence](https://www.framer.com/marketplace/templates/influence/) Framer
-template by Ramish Aziz, rebranded as Fastik Media.
+Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
 ## Getting started
 
