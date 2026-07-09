@@ -61,9 +61,14 @@ export default function Testimonials() {
           {items.map((t, i) => {
             const isActive = i === active;
             return (
-              <button
+              <div
                 key={i}
+                role="button"
+                tabIndex={0}
                 onClick={() => setActive(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") setActive(i);
+                }}
                 aria-label={`Show testimonial from ${t.handle}`}
                 className={`w-[300px] shrink-0 cursor-pointer text-left transition-all duration-700 ${
                   isActive ? "opacity-100" : "opacity-40 saturate-50"
@@ -101,7 +106,7 @@ export default function Testimonials() {
                     </span>
                   ))}
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>

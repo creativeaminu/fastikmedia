@@ -114,6 +114,7 @@ export default function Hero() {
           <div className="relative">
             <AutoVideo
               id={HERO.reel.video}
+              allowSound
               className="aspect-[9/16] w-full rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.25)]"
             />
             <ProfileRow

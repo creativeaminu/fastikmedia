@@ -96,6 +96,32 @@ export function QuoteIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function SpeakerMutedIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className}>
+      <path d="M4 9v6h3l5 4V5L7 9H4z" fill="currentColor" stroke="none" />
+      <path d="M17 9l4 6M21 9l-4 6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function SpeakerOnIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className}>
+      <path d="M4 9v6h3l5 4V5L7 9H4z" fill="currentColor" stroke="none" />
+      <path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function PlayIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M8 5.5v13l11-6.5-11-6.5z" />
+    </svg>
+  );
+}
+
 export function FolderUploadIcon({ className = "h-6 w-6" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className}>

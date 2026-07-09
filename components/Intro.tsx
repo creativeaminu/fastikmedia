@@ -84,6 +84,7 @@ export default function Intro() {
           <Reveal delay={120} className="relative">
             <AutoVideo
               id={mission.reels[0].video}
+              allowSound
               className="aspect-[16/10] w-full rounded-[28px] shadow-[0_24px_60px_rgba(0,0,0,0.22)]"
             />
             <ProfileRow

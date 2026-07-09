@@ -44,6 +44,22 @@ export const PHOTOS = [
   P("sLsF68tNgIeMjXrWW9s9O6Pt27o.jpg"),
 ];
 
+// Brands collaborated with — logos pulled from creativeaminu.com.
+export const BRAND_LOGOS = [
+  "1",
+  "2",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "eleeeh-logo",
+].map((n) => `https://creativeaminu.com/images/brands/${n}.png`);
+
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Pricing", href: "#pricing" },
