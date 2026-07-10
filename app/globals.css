@@ -98,6 +98,67 @@ body {
   background-size: 44px 44px;
 }
 
+/* ---- Labs workflow canvas (How we build) ---- */
+.canvas-dots {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.flow-line {
+  stroke-dasharray: 5 7;
+  animation: flowDash 1.3s linear infinite;
+}
+
+@keyframes nodePop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.node-pop {
+  opacity: 0;
+  animation: nodePop 0.55s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+}
+
+@keyframes growX {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.step-progress {
+  width: 0;
+  animation: growX 6.5s linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-line {
+    animation: none;
+  }
+  .node-pop {
+    opacity: 1;
+    animation: none;
+  }
+  .step-progress {
+    width: 100%;
+    animation: none;
+  }
+}
+
 /* ---- scroll reveal ---- */
 .reveal {
   opacity: 0;

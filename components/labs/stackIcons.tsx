@@ -57,14 +57,34 @@ export const STACK_ICONS: Record<string, StackIcon> = {
   openai: { hex: "000000", petals: true },
 };
 
-export function ToolIcon({ slug }: { slug: string }) {
+/** perceived luminance of a hex colour, 0..255 */
+function luminance(hex: string) {
+  const n = parseInt(hex, 16);
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+export function ToolIcon({
+  slug,
+  onDark = false,
+}: {
+  slug: string;
+  /** set when the icon sits on a dark surface: near-black brand marks
+   *  (Vercel, Next.js, Anthropic, the OpenAI glyph) flip to white */
+  onDark?: boolean;
+}) {
   const icon = STACK_ICONS[slug];
   if (!icon) return null;
+
+  const fill =
+    onDark && luminance(icon.hex) < 60 ? "#ffffff" : `#${icon.hex}`;
 
   if (icon.petals) {
     return (
       <svg viewBox="0 0 24 24" width={18} height={18} className="shrink-0">
-        <g fill={`#${icon.hex}`}>
+        <g fill={fill}>
           <circle cx="12" cy="12" r="2.1" />
           {[0, 60, 120, 180, 240, 300].map((deg) => (
             <circle
@@ -82,7 +102,7 @@ export function ToolIcon({ slug }: { slug: string }) {
 
   return (
     <svg viewBox="0 0 24 24" width={18} height={18} className="shrink-0">
-      <path fill={`#${icon.hex}`} d={icon.path} />
+      <path fill={fill} d={icon.path} />
     </svg>
   );
 }
