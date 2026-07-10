@@ -328,7 +328,7 @@ export default function LabsProcess() {
   }, [active, steps.length]);
 
   return (
-    <section id="process" data-nav="dark" className="bg-dark-bg py-20 sm:py-28">
+    <section id="process" data-nav="dark" className="bg-dark-bg py-16 sm:py-28">
       <Container className="!max-w-[1180px]">
         <LabsHeader
           eyebrow={LABS.process.eyebrow}
@@ -337,52 +337,84 @@ export default function LabsProcess() {
           dark
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
-          {/* step list */}
-          <div className="flex flex-col gap-1.5">
-            {steps.map((s, i) => {
-              const isActive = i === active;
-              return (
-                <button
-                  key={s.step}
-                  onClick={() => setActive(i)}
-                  className={`relative w-full rounded-xl px-5 py-4 text-left transition-colors duration-300 ${
-                    isActive ? "bg-white/[0.05]" : "hover:bg-white/[0.03]"
-                  }`}
-                >
-                  <span
-                    className={`absolute bottom-2 left-0 top-2 w-[3px] rounded-full transition-colors duration-300 ${
-                      isActive ? "bg-orange" : "bg-transparent"
-                    }`}
-                  />
-                  <span className="mono-label text-white/40">{s.step}</span>
-                  <span
-                    className={`mt-1 block text-lg font-semibold tracking-tight transition-colors duration-300 ${
-                      isActive ? "text-white" : "text-white/55"
+        <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-8">
+          {/* ---- step selector ---- */}
+          <div>
+            {/* mobile: compact horizontal tabs + single active description */}
+            <div className="lg:hidden">
+              <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {steps.map((s, i) => (
+                  <button
+                    key={s.step}
+                    onClick={() => setActive(i)}
+                    className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                      i === active
+                        ? "border-white/15 bg-white/[0.08] text-white"
+                        : "border-white/8 text-white/45"
                     }`}
                   >
-                    {s.title}
-                  </span>
-                  <span
-                    className={`mt-1 block text-sm leading-relaxed transition-colors duration-300 ${
-                      isActive ? "text-dark-muted" : "text-white/30"
-                    }`}
-                  >
-                    {s.body}
-                  </span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-5 right-5 block h-px bg-white/10">
-                      <span className="step-progress block h-px bg-orange/80" />
+                    <span className="mono-label !text-[10px] text-white/40">
+                      {s.step}
                     </span>
-                  )}
-                </button>
-              );
-            })}
+                    {s.title}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-dark-muted">
+                {steps[active].body}
+              </p>
+              <span className="mt-4 block h-px bg-white/10">
+                <span
+                  key={active}
+                  className="step-progress block h-px bg-white/40"
+                />
+              </span>
+            </div>
+
+            {/* desktop: vertical list */}
+            <div className="hidden flex-col gap-1.5 lg:flex">
+              {steps.map((s, i) => {
+                const isActive = i === active;
+                return (
+                  <button
+                    key={s.step}
+                    onClick={() => setActive(i)}
+                    className={`relative w-full rounded-xl px-5 py-4 text-left transition-colors duration-300 ${
+                      isActive ? "bg-white/[0.05]" : "hover:bg-white/[0.03]"
+                    }`}
+                  >
+                    <span className="mono-label text-white/40">{s.step}</span>
+                    <span
+                      className={`mt-1 block text-lg font-semibold tracking-tight transition-colors duration-300 ${
+                        isActive ? "text-white" : "text-white/55"
+                      }`}
+                    >
+                      {s.title}
+                    </span>
+                    <span
+                      className={`mt-1 block text-sm leading-relaxed transition-colors duration-300 ${
+                        isActive ? "text-dark-muted" : "text-white/30"
+                      }`}
+                    >
+                      {s.body}
+                    </span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-5 right-5 block h-px bg-white/10">
+                        <span className="step-progress block h-px bg-white/40" />
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* workflow canvas */}
-          <div className="canvas-dots overflow-x-auto rounded-[24px] border border-white/8 bg-[#0e0e12]">
-            <div className="flex min-w-[760px] justify-center py-4" key={active}>
+          {/* ---- workflow canvas ---- */}
+          <div className="canvas-dots overflow-x-auto rounded-[24px] border border-white/8 bg-[#0e0e12] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div
+              className="flex min-w-[760px] justify-start py-4 lg:justify-center"
+              key={active}
+            >
               <Canvas d={DIAGRAMS[active]} />
             </div>
           </div>
