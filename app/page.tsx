@@ -11,7 +11,6 @@ import Pricing from "@/components/Pricing";
 import QuoteWall from "@/components/QuoteWall";
 import Blog from "@/components/Blog";
 import CtaSection from "@/components/CTA";
-import ArmCrossLink from "@/components/ArmCrossLink";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
         <QuoteWall />
         <Blog />
         <CtaSection />
-        <ArmCrossLink to="labs" />
       </main>
       <Footer />
     </>

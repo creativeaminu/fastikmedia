@@ -29,7 +29,7 @@ const ICONS = [
 
 export default function LabsServices() {
   return (
-    <section id="capabilities" className="border-y border-line bg-bg py-20 sm:py-24">
+    <section id="capabilities" className="border-t border-line bg-bg pb-14 pt-20 sm:pb-16 sm:pt-24">
       <Container className="!max-w-[1180px]">
         <Reveal>
           <LabsHeader

@@ -8,7 +8,6 @@ const LABS_COLUMNS = [
       { label: "Capabilities", href: "#capabilities" },
       { label: "Process", href: "#process" },
       { label: "Work", href: "#work" },
-      { label: "Fastik Media", href: "/" },
     ],
   },
   {
@@ -35,6 +34,8 @@ export default function Footer({ arm = "media" }: { arm?: "media" | "labs" }) {
     ? "The technology arm of Fastik Media. Automation, AI agents, software and web."
     : FOOTER.tagline;
   const home = isLabs ? "/labs" : "/";
+  const crossHref = isLabs ? "/" : "/labs";
+  const crossLabel = isLabs ? "Fastik Media" : "Fastik Labs";
 
   return (
     <footer
@@ -59,6 +60,15 @@ export default function Footer({ arm = "media" }: { arm?: "media" | "labs" }) {
             <p className="mt-5 max-w-[15rem] text-[15px] leading-relaxed text-dark-muted">
               {tagline}
             </p>
+            <Link
+              href={crossHref}
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
+            >
+              Also see {crossLabel}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
 
           <div className="grid grid-cols-3 gap-x-14 gap-y-3">

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ArmCrossLink from "@/components/ArmCrossLink";
 import LabsHero from "@/components/labs/LabsHero";
 import LabsServices from "@/components/labs/LabsServices";
 import LabsProcess from "@/components/labs/LabsProcess";
@@ -32,7 +31,6 @@ export default function LabsPage() {
         <LabsProcess />
         <LabsWork />
         <LabsCTA />
-        <ArmCrossLink to="media" />
       </main>
       <Footer arm="labs" />
     </>

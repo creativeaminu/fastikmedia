@@ -475,10 +475,10 @@ export const FOOTER = {
   columns: [
     {
       links: [
+        { label: "About", href: "#about" },
         { label: "Work", href: "#work" },
         { label: "Production", href: "#production" },
         { label: "Pricing", href: "#pricing" },
-        { label: "Fastik Labs", href: "/labs" },
       ],
     },
     {
@@ -559,7 +559,7 @@ export const LABS = {
   stack: {
     eyebrow: "Stack",
     title: "Built on modern, battle-tested tools.",
-    // slug = Simple Icons id, served in brand colour from cdn.simpleicons.org
+    // slug keys into components/labs/stackIcons.tsx (bundled brand SVGs).
     items: [
       { name: "TypeScript", slug: "typescript" },
       { name: "Next.js", slug: "nextdotjs" },

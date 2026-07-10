@@ -26,7 +26,7 @@ export default function LabsWork() {
                     {w.title}
                   </h3>
                 </div>
-                <span className="shrink-0 rounded-full bg-white px-3.5 py-2 text-sm font-medium text-ink-strong">
+                <span className="shrink-0 rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-sm font-medium text-white">
                   {w.outcome}
                 </span>
               </article>
