@@ -2,6 +2,7 @@
 
 :root {
   --bg: #f5f5f5;
+  --bg-alt: #ececec;
   --card: #ffffff;
   --ink: #1c1c1c;
   --ink-strong: #000000;
@@ -21,12 +22,17 @@
   --orange-deep: #ff4726;
   --amber: #f7b900;
   --blue: #0099ff;
+
+  /* Fastik Labs accent (technology arm) */
+  --indigo: #4f6bff;
+  --indigo-soft: #7b8dff;
 }
 
 @theme inline {
   --font-sans: var(--font-inter);
   --font-mono: var(--font-fragment-mono);
   --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
   --color-card: var(--card);
   --color-ink: var(--ink);
   --color-ink-strong: var(--ink-strong);
@@ -41,6 +47,8 @@
   --color-orange: var(--orange);
   --color-amber: var(--amber);
   --color-blue: var(--blue);
+  --color-indigo: var(--indigo);
+  --color-indigo-soft: var(--indigo-soft);
 }
 
 html {
@@ -86,6 +94,34 @@ body {
   color: var(--orange);
   border: 1px solid rgba(255, 122, 0, 0.45);
   background: rgba(255, 122, 0, 0.05);
+}
+
+/* ---- Fastik Labs (technology arm) ---- */
+.labs-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  color: var(--indigo-soft);
+  border: 1px solid rgba(79, 107, 255, 0.4);
+  background: rgba(79, 107, 255, 0.08);
+}
+
+/* faint technical grid backdrop for Labs sections */
+.labs-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.labs-glow {
+  background: radial-gradient(
+    60% 60% at 50% 0%,
+    rgba(79, 107, 255, 0.18),
+    transparent 70%
+  );
 }
 
 /* ---- scroll reveal ---- */

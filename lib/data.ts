@@ -61,18 +61,106 @@ export const BRAND_LOGOS = [
 ].map((n) => `https://creativeaminu.com/images/brands/${n}.png`);
 
 export const NAV_LINKS = [
-  { label: "About", href: "#about" },
+  { label: "Work", href: "#work" },
+  { label: "Production", href: "#production" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
+// ---- Creative service pillars ("What we do") ----
+export const SERVICES = {
+  eyebrow: "What we do",
+  title: "One studio, from first frame to shipped product.",
+  sub: "We create content that grows brands, produce films that move people, and build the technology behind them.",
+  pillars: [
+    {
+      name: "Content & Social",
+      body: "Short-form content and social growth that turns your expertise into attention and real business outcomes.",
+      points: ["Short-form video", "Social growth", "Content strategy"],
+      href: "#work",
+      cta: "See the reels",
+    },
+    {
+      name: "Film & Production",
+      body: "Cinematic brand films, commercials, events, weddings, fashion coverage and music videos — end to end.",
+      points: ["Commercials", "Events & weddings", "Fashion & music videos"],
+      href: "#production",
+      cta: "See the films",
+    },
+    {
+      name: "Technology — Fastik Labs",
+      body: "Workflow automation, AI agents, software and websites. Our technology arm builds what powers modern brands.",
+      points: ["Automation & AI agents", "Software", "Web & app development"],
+      href: "/labs",
+      cta: "Visit Fastik Labs",
+      isLabs: true,
+    },
+  ],
+};
+
+// ---- Film & Production showcase (16:9 films from creativeaminu.com) ----
+export const FILMS = {
+  eyebrow: "Production",
+  title: "Films that make brands impossible to ignore.",
+  sub: "From concerts and campaigns to weddings and runways — we shoot, direct and edit cinematic stories, end to end.",
+  categories: [
+    "Commercials",
+    "Events",
+    "Weddings",
+    "Fashion",
+    "Music Videos",
+    "Documentary",
+  ],
+  items: [
+    {
+      video: "9ZXEFtPDEFkZ01O02pGUjzm6SuPaZJqEymFy6Alw3mTso",
+      title: "Rema Concert — Aftermovie",
+      category: "Events",
+      placeholder: false,
+    },
+    {
+      video: "oqogXMSca02XLSVYHd4HYWZJB1lQG7zt67Hy74mHccUs",
+      title: "Hype Festival — Aftermovie",
+      category: "Events",
+      placeholder: false,
+    },
+    {
+      video: "zNga01BSVdbXQmHE6QM6kCfYEem992cGvx7Gh8APyulI",
+      title: "Perfect Runway — Fashion Casting",
+      category: "Fashion",
+      placeholder: false,
+    },
+    {
+      video: "U00EqNsQJ26Tpx2ogJgSa7wh9bfY029wN2TkXpmPFzhRo",
+      title: "Start2Dance — Documentary",
+      category: "Documentary",
+      placeholder: false,
+    },
+    {
+      title: "Brand commercial",
+      category: "Commercials",
+      placeholder: true,
+    },
+    {
+      title: "Wedding film",
+      category: "Weddings",
+      placeholder: true,
+    },
+    {
+      title: "Music video",
+      category: "Music Videos",
+      placeholder: true,
+    },
+  ],
+  cta: "Start a production",
+};
+
 export const HERO = {
-  badge: "3 spots left for August",
-  sub: "We turn your expertise into viral short-form content that builds trust and drives attention.",
-  ctaPrimary: "Let's grow your brand",
-  ctaSecondary: "See pricing",
-  proofBrands: "100+ personal brands",
+  badge: "A creative & technology studio",
+  sub: "Short-form content, cinematic films and the technology behind them. We help brands grow attention, tell better stories, and ship what's next.",
+  ctaPrimary: "Start a project",
+  ctaSecondary: "See our work",
+  proofBrands: "100+ brands & creators",
   proofRating: "Rated excellent: 5/5",
   reel: { video: MUX[0], ...ID_AMINU },
 };
@@ -223,8 +311,20 @@ export const PROCESS = {
 };
 
 export const PRICING = {
-  title: "Flexible plans built for growth.",
-  sub: "Pick a plan that fits your content needs and lets us do the heavy lifting.",
+  eyebrow: "Content packages",
+  title: "Flexible content plans built for growth.",
+  sub: "Monthly short-form packages for creators and brands. Film production and technology projects are scoped individually — just reach out for a quote.",
+  quote: {
+    name: "Production & Labs",
+    blurb:
+      "Brand films, events, weddings, music videos, or software & automation with Fastik Labs — priced per project.",
+    features: [
+      "Custom scope & timeline",
+      "Dedicated production or build team",
+      "Fixed project quote",
+    ],
+    cta: "Request a quote",
+  },
   plans: [
     {
       name: "Starter plan",
@@ -371,14 +471,14 @@ export const CTA = {
 
 export const FOOTER = {
   tagline:
-    "We turn your expertise into viral short-form content that builds trust and drives attention.",
+    "A creative & technology studio — short-form content, cinematic films, and the software behind them.",
   columns: [
     {
       links: [
-        { label: "About", href: "#about" },
+        { label: "Work", href: "#work" },
+        { label: "Production", href: "#production" },
         { label: "Pricing", href: "#pricing" },
-        { label: "Blog", href: "#blog" },
-        { label: "Careers", href: "#" },
+        { label: "Fastik Labs", href: "/labs" },
       ],
     },
     {
@@ -396,4 +496,99 @@ export const FOOTER = {
       ],
     },
   ],
+};
+
+// ---- Fastik Labs (technology arm) ----
+export const LABS = {
+  name: "Fastik Labs",
+  nav: [
+    { label: "Capabilities", href: "#capabilities" },
+    { label: "Process", href: "#process" },
+    { label: "Work", href: "#work" },
+    { label: "Contact", href: "#contact" },
+  ],
+  hero: {
+    badge: "The technology arm of Fastik Media",
+    title: "We build the software, automation and AI behind modern brands.",
+    sub: "From internal workflow automation to production-grade apps and AI agents — Fastik Labs turns operational headaches into shipped products.",
+    ctaPrimary: "Start a project",
+    ctaSecondary: "See capabilities",
+    stats: [
+      { value: "30+", label: "Systems shipped" },
+      { value: "10k+", label: "Hours automated" },
+      { value: "24/7", label: "Agents running" },
+    ],
+  },
+  services: {
+    eyebrow: "Capabilities",
+    title: "Everything you need to ship.",
+    sub: "Four core capabilities, one team — we scope, build and maintain the technology end to end.",
+    items: [
+      {
+        name: "Workflow Automation",
+        body: "Kill the busywork. We connect your tools and automate the repetitive processes that slow your team down.",
+        points: ["Zapier / Make / n8n", "Custom API integrations", "Ops dashboards"],
+      },
+      {
+        name: "AI Agent Building",
+        body: "Autonomous agents and assistants that handle support, research, content and internal ops around the clock.",
+        points: ["LLM agents & tools", "RAG & knowledge bases", "Voice & chat assistants"],
+      },
+      {
+        name: "Software Development",
+        body: "Production-grade web apps, internal tools and platforms — designed, built and maintained by one team.",
+        points: ["Full-stack apps", "Internal tools", "APIs & databases"],
+      },
+      {
+        name: "Web & App Development",
+        body: "Fast, beautiful marketing sites and product experiences that convert — engineered for performance.",
+        points: ["Marketing sites", "Web & mobile apps", "CMS & e-commerce"],
+      },
+    ],
+  },
+  process: {
+    eyebrow: "Process",
+    title: "How we build.",
+    sub: "A tight, transparent loop — you always know what's shipping next.",
+    steps: [
+      { step: "01", title: "Discovery", body: "We map your goals, tools and constraints, then scope the smallest thing that delivers real value." },
+      { step: "02", title: "Build", body: "Rapid, iterative development with previews you can click — no black boxes, no six-month waits." },
+      { step: "03", title: "Ship", body: "We deploy to production, hook up analytics, and hand over clean docs and access." },
+      { step: "04", title: "Iterate", body: "We monitor, maintain and improve — your systems get better every month, not staler." },
+    ],
+  },
+  stack: {
+    eyebrow: "Stack",
+    title: "Built on modern, battle-tested tools.",
+    items: [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "OpenAI",
+      "Anthropic",
+      "Supabase",
+      "Vercel",
+      "n8n",
+      "Stripe",
+    ],
+  },
+  work: {
+    eyebrow: "Selected work",
+    title: "Systems we've shipped.",
+    sub: "A snapshot of what we build — full case studies coming soon.",
+    items: [
+      { title: "Content ops automation", sector: "Media agency", outcome: "12 hrs/week saved" },
+      { title: "AI booking assistant", sector: "Events", outcome: "3× faster replies" },
+      { title: "Client portal & CRM", sector: "Studio", outcome: "One source of truth" },
+      { title: "Lead-gen automation", sector: "B2B", outcome: "+38% qualified leads" },
+    ],
+  },
+  cta: {
+    title: "Have a workflow, product or idea worth building?",
+    sub: "Tell us what's slowing you down. We'll tell you what we'd build.",
+    button: "Start a project",
+  },
 };

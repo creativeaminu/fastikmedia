@@ -10,7 +10,7 @@ export default function Pricing() {
       <Container className="!max-w-[1080px]">
         <Reveal>
           <SectionHeader
-            eyebrow="Pricing"
+            eyebrow={PRICING.eyebrow}
             title={PRICING.title}
             sub={PRICING.sub}
             dark
@@ -67,6 +67,37 @@ export default function Pricing() {
             </Reveal>
           ))}
         </div>
+
+        {/* Production & Labs — project-based, quote CTA */}
+        <Reveal delay={120}>
+          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-[24px] border border-white/[0.08] bg-dark-card p-7 sm:flex-row sm:items-center sm:p-8">
+            <div>
+              <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                {PRICING.quote.name}
+              </h3>
+              <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-dark-muted">
+                {PRICING.quote.blurb}
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {PRICING.quote.features.map((f) => (
+                  <li
+                    key={f}
+                    className="flex items-center gap-2 text-sm text-white/80"
+                  >
+                    <span className="h-1 w-1 rounded-full bg-white/50" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link
+              href="#contact"
+              className="shrink-0 rounded-full bg-white px-6 py-3.5 text-sm font-medium text-ink-strong transition-all hover:-translate-y-0.5 hover:bg-neutral-100"
+            >
+              {PRICING.quote.cta}
+            </Link>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

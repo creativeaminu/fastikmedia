@@ -77,7 +77,7 @@ export default function Hero() {
             >
               {HERO.ctaPrimary}
             </PillButton>
-            <PillButton href="#pricing" variant="light">
+            <PillButton href="#work" variant="light">
               {HERO.ctaSecondary}
             </PillButton>
           </div>

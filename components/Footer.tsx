@@ -1,34 +1,68 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND, FOOTER } from "@/lib/data";
+import { BRAND, FOOTER, LABS } from "@/lib/data";
 
-export default function Footer() {
+const LABS_COLUMNS = [
+  {
+    links: [
+      { label: "Capabilities", href: "#capabilities" },
+      { label: "Process", href: "#process" },
+      { label: "Work", href: "#work" },
+      { label: "Fastik Media", href: "/" },
+    ],
+  },
+  {
+    links: [
+      { label: "Automation", href: "#capabilities" },
+      { label: "AI agents", href: "#capabilities" },
+      { label: "Software", href: "#capabilities" },
+    ],
+  },
+  {
+    links: [
+      { label: "Contact", href: "#contact" },
+      { label: "Terms", href: "#" },
+      { label: "404", href: "#" },
+    ],
+  },
+];
+
+export default function Footer({ arm = "media" }: { arm?: "media" | "labs" }) {
+  const isLabs = arm === "labs";
+  const name = isLabs ? LABS.name : BRAND;
+  const columns = isLabs ? LABS_COLUMNS : FOOTER.columns;
+  const tagline = isLabs
+    ? "The technology arm of Fastik Media — automation, AI agents, software and web."
+    : FOOTER.tagline;
+  const home = isLabs ? "/labs" : "/";
+
   return (
-    <footer data-nav="dark" className="border-t border-dark-line bg-dark-bg pb-10 pt-20">
+    <footer
+      data-nav="dark"
+      className="border-t border-dark-line bg-dark-bg pb-10 pt-20"
+    >
       <div className="mx-auto w-full max-w-[1080px] px-5 sm:px-8">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
-          {/* Brand */}
           <div>
-            <Link href="#top" className="flex items-center gap-3">
+            <Link href={home} className="flex items-center gap-3">
               <Image
                 src="/fastik-icon.png"
-                alt={BRAND}
+                alt={name}
                 width={40}
                 height={40}
                 className="h-10 w-10 rounded-[10px]"
               />
               <span className="text-3xl font-semibold tracking-tight text-white">
-                {BRAND}
+                {name}
               </span>
             </Link>
             <p className="mt-5 max-w-[15rem] text-[15px] leading-relaxed text-dark-muted">
-              {FOOTER.tagline}
+              {tagline}
             </p>
           </div>
 
-          {/* Link columns */}
           <div className="grid grid-cols-3 gap-x-14 gap-y-3">
-            {FOOTER.columns.map((col, i) => (
+            {columns.map((col, i) => (
               <ul key={i} className="space-y-3.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
@@ -49,7 +83,11 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {BRAND}. All rights reserved.
           </p>
-          <p>Short-form content that builds real influence.</p>
+          <p>
+            {isLabs
+              ? "Software, automation & AI — built to ship."
+              : "A creative & technology studio."}
+          </p>
         </div>
       </div>
     </footer>
