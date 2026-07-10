@@ -38,14 +38,14 @@ export default function Services() {
                 >
                   <div className="flex items-center justify-between">
                     <span
-                      className={`mono-label ${labs ? "text-indigo-soft" : "text-muted"}`}
+                      className={`mono-label ${labs ? "text-white/50" : "text-muted"}`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
                       className={`grid h-9 w-9 place-items-center rounded-full transition-colors ${
                         labs
-                          ? "bg-indigo/15 text-indigo-soft group-hover:bg-indigo group-hover:text-white"
+                          ? "bg-white/10 text-white group-hover:bg-white group-hover:text-ink-strong"
                           : "bg-bg-alt text-ink-strong group-hover:bg-ink-strong group-hover:text-white"
                       }`}
                     >
@@ -78,7 +78,7 @@ export default function Services() {
                       >
                         <span
                           className={`h-1.5 w-1.5 rounded-full ${
-                            labs ? "bg-indigo-soft" : "bg-ink-strong"
+                            labs ? "bg-white" : "bg-ink-strong"
                           }`}
                         />
                         {pt}
@@ -88,7 +88,7 @@ export default function Services() {
 
                   <span
                     className={`mt-8 inline-flex items-center gap-1.5 text-sm font-medium ${
-                      labs ? "text-indigo-soft" : "text-ink-strong"
+                      labs ? "text-white" : "text-ink-strong"
                     }`}
                   >
                     {p.cta}

@@ -1,10 +1,14 @@
 import { LABS } from "@/lib/data";
 
+/**
+ * Tool marquee using each tool's real logo in brand colour, served from the
+ * Simple Icons CDN. Rendered as white chips on the light band.
+ */
 export default function LabsStack() {
   const loop = [...LABS.stack.items, ...LABS.stack.items];
   return (
-    <section className="labs-grid overflow-hidden py-16 sm:py-20">
-      <p className="mono-label mb-8 text-center text-dark-muted">
+    <section className="overflow-hidden bg-bg py-16 sm:py-20">
+      <p className="mono-label mb-8 text-center text-muted">
         {LABS.stack.title}
       </p>
       <div className="marquee-mask flex overflow-hidden">
@@ -12,9 +16,18 @@ export default function LabsStack() {
           {loop.map((tool, i) => (
             <span
               key={i}
-              className="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-white/80"
+              className="flex shrink-0 items-center gap-2.5 rounded-full border border-line bg-card px-5 py-2.5 text-sm font-medium text-ink shadow-[0_4px_14px_rgba(0,0,0,0.04)]"
             >
-              {tool}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://cdn.simpleicons.org/${tool.slug}`}
+                alt=""
+                width={18}
+                height={18}
+                loading="lazy"
+                className="h-[18px] w-[18px]"
+              />
+              {tool.name}
             </span>
           ))}
         </div>

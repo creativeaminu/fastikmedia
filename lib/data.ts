@@ -82,13 +82,13 @@ export const SERVICES = {
     },
     {
       name: "Film & Production",
-      body: "Cinematic brand films, commercials, events, weddings, fashion coverage and music videos — end to end.",
+      body: "Cinematic brand films, commercials, events, weddings, fashion coverage and music videos, end to end.",
       points: ["Commercials", "Events & weddings", "Fashion & music videos"],
       href: "#production",
       cta: "See the films",
     },
     {
-      name: "Technology — Fastik Labs",
+      name: "Fastik Labs",
       body: "Workflow automation, AI agents, software and websites. Our technology arm builds what powers modern brands.",
       points: ["Automation & AI agents", "Software", "Web & app development"],
       href: "/labs",
@@ -102,7 +102,7 @@ export const SERVICES = {
 export const FILMS = {
   eyebrow: "Production",
   title: "Films that make brands impossible to ignore.",
-  sub: "From concerts and campaigns to weddings and runways — we shoot, direct and edit cinematic stories, end to end.",
+  sub: "From concerts and campaigns to weddings and runways, we shoot, direct and edit cinematic stories end to end.",
   categories: [
     "Commercials",
     "Events",
@@ -114,25 +114,25 @@ export const FILMS = {
   items: [
     {
       video: "9ZXEFtPDEFkZ01O02pGUjzm6SuPaZJqEymFy6Alw3mTso",
-      title: "Rema Concert — Aftermovie",
+      title: "Rema Concert Aftermovie",
       category: "Events",
       placeholder: false,
     },
     {
       video: "oqogXMSca02XLSVYHd4HYWZJB1lQG7zt67Hy74mHccUs",
-      title: "Hype Festival — Aftermovie",
+      title: "Hype Festival Aftermovie",
       category: "Events",
       placeholder: false,
     },
     {
       video: "zNga01BSVdbXQmHE6QM6kCfYEem992cGvx7Gh8APyulI",
-      title: "Perfect Runway — Fashion Casting",
+      title: "Perfect Runway Fashion Casting",
       category: "Fashion",
       placeholder: false,
     },
     {
       video: "U00EqNsQJ26Tpx2ogJgSa7wh9bfY029wN2TkXpmPFzhRo",
-      title: "Start2Dance — Documentary",
+      title: "Start2Dance Documentary",
       category: "Documentary",
       placeholder: false,
     },
@@ -189,7 +189,7 @@ export const INTRO = [
   {
     label: "Mission",
     title: "Built for creators who are ready to grow today.",
-    body: "If you're showing up, we'll make sure it converts — with short-form content built to scale.",
+    body: "If you're showing up, we'll make sure it converts, with short-form content built to scale.",
     reels: [
       {
         video: PROJECT_HYPE,
@@ -205,7 +205,7 @@ export const INTRO = [
 
 export const PROJECTS = {
   title: "Where strategy meets scroll-stopping content.",
-  sub: "A curated look at how we turned raw footage into viral-worthy moments — and real audience growth.",
+  sub: "A curated look at how we turned raw footage into viral-worthy moments and real audience growth.",
   items: [
     { video: MUX[1], ...ID_FASTIK },
     { video: MUX[2], ...ID_AMINU },
@@ -276,7 +276,7 @@ export const TESTIMONIALS = {
 
 export const PROCESS = {
   title: "Here's how we turn your raw clips into viral content.",
-  sub: "From idea to execution, we handle everything — so you can focus on creating while we make sure your videos get seen, shared, and saved.",
+  sub: "From idea to execution, we handle everything so you can focus on creating while we make sure your videos get seen, shared, and saved.",
   steps: [
     {
       step: "Step 1",
@@ -287,7 +287,7 @@ export const PROCESS = {
     {
       step: "Step 2",
       title: "Send us your footage.",
-      body: "Record on your phone, Zoom, podcast, or wherever you like. Just upload it — we'll take it from there.",
+      body: "Record on your phone, Zoom, podcast, or wherever you like. Just upload it and we'll take it from there.",
       visual: "upload" as const,
     },
     {
@@ -304,7 +304,7 @@ export const PROCESS = {
     {
       step: "Step 4",
       title: "Track what works.",
-      body: "Each month, we show you what's performing best — so you can double down on content that converts.",
+      body: "Each month, we show you what's performing best so you can double down on content that converts.",
       visual: "chart" as const,
     },
   ],
@@ -313,11 +313,11 @@ export const PROCESS = {
 export const PRICING = {
   eyebrow: "Content packages",
   title: "Flexible content plans built for growth.",
-  sub: "Monthly short-form packages for creators and brands. Film production and technology projects are scoped individually — just reach out for a quote.",
+  sub: "Monthly short-form packages for creators and brands. Film production and technology projects are scoped individually, so just reach out for a quote.",
   quote: {
     name: "Production & Labs",
     blurb:
-      "Brand films, events, weddings, music videos, or software & automation with Fastik Labs — priced per project.",
+      "Brand films, events, weddings, music videos, or software & automation with Fastik Labs. Priced per project.",
     features: [
       "Custom scope & timeline",
       "Dedicated production or build team",
@@ -375,7 +375,7 @@ export const QUOTES = [
     avatar: PHOTOS[1],
   },
   {
-    text: `Our Reels finally have structure, pace, and purpose — thanks to ${BRAND}.`,
+    text: `Our Reels finally have structure, pace, and purpose, thanks to ${BRAND}.`,
     author: "_traveldiaries",
     avatar: PHOTOS[2],
   },
@@ -385,7 +385,7 @@ export const QUOTES = [
     avatar: PHOTOS[4],
   },
   {
-    text: `From 2K to 10K followers in weeks — ${BRAND} knows what works.`,
+    text: `From 2K to 10K followers in weeks. ${BRAND} knows what works.`,
     author: "Maya Lennox",
     avatar: PHOTOS[5],
   },
@@ -395,7 +395,7 @@ export const QUOTES = [
     avatar: PHOTOS[6],
   },
   {
-    text: "They handled everything — editing, pacing, captions — perfectly.",
+    text: "They handled everything: editing, pacing, captions. Perfectly.",
     author: "Lara_Cunningham",
     avatar: PHOTOS[8],
   },
@@ -439,7 +439,7 @@ export const BLOG = {
       category: "Platform Insights",
       title: "Instagram vs TikTok: Which Should You Prioritize in 2025?",
       excerpt:
-        "A no-fluff comparison of where your content performs best — based on data, trends, and goals.",
+        "A no-fluff comparison of where your content performs best, based on data, trends, and goals.",
       author: "Zane Cooper",
       read: "6 min",
       photo: PHOTOS[5],
@@ -471,7 +471,7 @@ export const CTA = {
 
 export const FOOTER = {
   tagline:
-    "A creative & technology studio — short-form content, cinematic films, and the software behind them.",
+    "A creative & technology studio. Short-form content, cinematic films, and the software behind them.",
   columns: [
     {
       links: [
@@ -508,9 +508,8 @@ export const LABS = {
     { label: "Contact", href: "#contact" },
   ],
   hero: {
-    badge: "The technology arm of Fastik Media",
     title: "We build the software, automation and AI behind modern brands.",
-    sub: "From internal workflow automation to production-grade apps and AI agents — Fastik Labs turns operational headaches into shipped products.",
+    sub: "From internal workflow automation to production-grade apps and AI agents, Fastik Labs turns operational headaches into shipped products.",
     ctaPrimary: "Start a project",
     ctaSecondary: "See capabilities",
     stats: [
@@ -522,7 +521,7 @@ export const LABS = {
   services: {
     eyebrow: "Capabilities",
     title: "Everything you need to ship.",
-    sub: "Four core capabilities, one team — we scope, build and maintain the technology end to end.",
+    sub: "Four core capabilities, one team. We scope, build and maintain the technology end to end.",
     items: [
       {
         name: "Workflow Automation",
@@ -536,12 +535,12 @@ export const LABS = {
       },
       {
         name: "Software Development",
-        body: "Production-grade web apps, internal tools and platforms — designed, built and maintained by one team.",
+        body: "Production-grade web apps, internal tools and platforms, designed, built and maintained by one team.",
         points: ["Full-stack apps", "Internal tools", "APIs & databases"],
       },
       {
         name: "Web & App Development",
-        body: "Fast, beautiful marketing sites and product experiences that convert — engineered for performance.",
+        body: "Fast, beautiful marketing sites and product experiences that convert, engineered for performance.",
         points: ["Marketing sites", "Web & mobile apps", "CMS & e-commerce"],
       },
     ],
@@ -549,36 +548,37 @@ export const LABS = {
   process: {
     eyebrow: "Process",
     title: "How we build.",
-    sub: "A tight, transparent loop — you always know what's shipping next.",
+    sub: "A tight, transparent loop. You always know what's shipping next.",
     steps: [
       { step: "01", title: "Discovery", body: "We map your goals, tools and constraints, then scope the smallest thing that delivers real value." },
-      { step: "02", title: "Build", body: "Rapid, iterative development with previews you can click — no black boxes, no six-month waits." },
+      { step: "02", title: "Build", body: "Rapid, iterative development with previews you can click. No black boxes, no six-month waits." },
       { step: "03", title: "Ship", body: "We deploy to production, hook up analytics, and hand over clean docs and access." },
-      { step: "04", title: "Iterate", body: "We monitor, maintain and improve — your systems get better every month, not staler." },
+      { step: "04", title: "Iterate", body: "We monitor, maintain and improve, so your systems get better every month, not staler." },
     ],
   },
   stack: {
     eyebrow: "Stack",
     title: "Built on modern, battle-tested tools.",
+    // slug = Simple Icons id, served in brand colour from cdn.simpleicons.org
     items: [
-      "TypeScript",
-      "Next.js",
-      "React",
-      "Node.js",
-      "Python",
-      "PostgreSQL",
-      "OpenAI",
-      "Anthropic",
-      "Supabase",
-      "Vercel",
-      "n8n",
-      "Stripe",
+      { name: "TypeScript", slug: "typescript" },
+      { name: "Next.js", slug: "nextdotjs" },
+      { name: "React", slug: "react" },
+      { name: "Node.js", slug: "nodedotjs" },
+      { name: "Python", slug: "python" },
+      { name: "PostgreSQL", slug: "postgresql" },
+      { name: "OpenAI", slug: "openai" },
+      { name: "Anthropic", slug: "anthropic" },
+      { name: "Supabase", slug: "supabase" },
+      { name: "Vercel", slug: "vercel" },
+      { name: "n8n", slug: "n8n" },
+      { name: "Stripe", slug: "stripe" },
     ],
   },
   work: {
     eyebrow: "Selected work",
     title: "Systems we've shipped.",
-    sub: "A snapshot of what we build — full case studies coming soon.",
+    sub: "A snapshot of what we build. Full case studies coming soon.",
     items: [
       { title: "Content ops automation", sector: "Media agency", outcome: "12 hrs/week saved" },
       { title: "AI booking assistant", sector: "Events", outcome: "3× faster replies" },

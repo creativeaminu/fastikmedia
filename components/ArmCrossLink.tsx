@@ -24,15 +24,11 @@ export default function ArmCrossLink({ to }: { to: "labs" | "media" }) {
       };
 
   return (
-    <section className={labs ? "bg-dark-bg pb-6 pt-2" : "bg-dark-bg pb-6 pt-2"}>
+    <section data-nav="dark" className="bg-dark-bg pb-6 pt-2">
       <div className="mx-auto w-full max-w-[1080px] px-5 sm:px-8">
         <Link
           href={config.href}
-          className={`group flex flex-col items-start gap-5 rounded-[24px] border p-7 transition-all hover:-translate-y-1 sm:flex-row sm:items-center sm:justify-between sm:p-9 ${
-            labs
-              ? "border-[rgba(79,107,255,0.3)] bg-[rgba(79,107,255,0.07)]"
-              : "border-dark-line bg-dark-card"
-          }`}
+          className="group flex flex-col items-start gap-5 rounded-[24px] border border-dark-line bg-dark-card p-7 transition-all hover:-translate-y-1 sm:flex-row sm:items-center sm:justify-between sm:p-9"
         >
           <div className="flex items-start gap-4">
             <Image
@@ -44,7 +40,7 @@ export default function ArmCrossLink({ to }: { to: "labs" | "media" }) {
             />
             <div>
               <span
-                className={`mono-label ${labs ? "text-indigo-soft" : "text-dark-muted"}`}
+                className="mono-label text-dark-muted"
               >
                 {config.eyebrow}
               </span>
@@ -56,13 +52,7 @@ export default function ArmCrossLink({ to }: { to: "labs" | "media" }) {
               </p>
             </div>
           </div>
-          <span
-            className={`inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors ${
-              labs
-                ? "bg-indigo text-white group-hover:bg-[#3f5aff]"
-                : "bg-white text-ink-strong group-hover:bg-neutral-100"
-            }`}
-          >
+          <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-ink-strong transition-colors group-hover:bg-neutral-100">
             {config.cta}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 transition-transform group-hover:translate-x-1">
               <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />

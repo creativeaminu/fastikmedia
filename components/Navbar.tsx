@@ -13,11 +13,10 @@ import { AVATAR_MAIN, LABS, NAV_LINKS } from "@/lib/data";
  */
 export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
   const isLabs = arm === "labs";
-  const [overDark, setOverDark] = useState(isLabs);
+  const [overDark, setOverDark] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (isLabs) return; // Labs is dark end-to-end
     const darkSections = Array.from(
       document.querySelectorAll<HTMLElement>('[data-nav="dark"]')
     );
@@ -36,9 +35,9 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
       window.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
-  }, [isLabs]);
+  }, []);
 
-  const dark = overDark || isLabs;
+  const dark = overDark;
   const links = isLabs ? LABS.nav : NAV_LINKS;
   const linkColor = dark
     ? "text-white/80 hover:text-white"
@@ -68,7 +67,7 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
         href="/labs"
         className={`rounded-full px-3 py-1 transition-colors ${
           isLabs
-            ? "bg-indigo text-white"
+            ? "bg-ink-strong text-white"
             : dark
               ? "text-white/70 hover:text-white"
               : "text-ink hover:text-ink-strong"
@@ -128,7 +127,11 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
           {isLabs ? (
             <Link
               href="#contact"
-              className="flex items-center gap-2 rounded-full bg-indigo px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_24px_rgba(79,107,255,0.35)] transition-all hover:-translate-y-0.5 hover:bg-[#3f5aff]"
+              className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5 ${
+                dark
+                  ? "bg-white text-ink-strong shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:bg-neutral-100"
+                  : "bg-[#1c1c1c] text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] hover:bg-black"
+              }`}
             >
               Start a project
             </Link>
@@ -180,7 +183,7 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
             href="#contact"
             onClick={() => setOpen(false)}
             className={`mt-1 block rounded-xl px-4 py-3 text-center text-sm font-medium text-white ${
-              isLabs ? "bg-indigo" : "bg-[#1c1c1c]"
+              isLabs ? "bg-ink-strong" : "bg-[#1c1c1c]"
             }`}
           >
             {isLabs ? "Start a project" : "Book a call"}

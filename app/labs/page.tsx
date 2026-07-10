@@ -10,13 +10,13 @@ import LabsWork from "@/components/labs/LabsWork";
 import LabsCTA from "@/components/labs/LabsCTA";
 
 export const metadata: Metadata = {
-  title: "Fastik Labs — Automation, AI Agents & Software",
+  title: "Fastik Labs | Automation, AI Agents & Software",
   description:
     "The technology arm of Fastik Media. We build workflow automation, AI agents, software and websites for modern brands.",
   openGraph: {
-    title: "Fastik Labs — Automation, AI Agents & Software",
+    title: "Fastik Labs | Automation, AI Agents & Software",
     description:
-      "Workflow automation, AI agents, software and web development — built to ship.",
+      "Workflow automation, AI agents, software and web development, built to ship.",
     type: "website",
   },
 };
@@ -25,11 +25,11 @@ export default function LabsPage() {
   return (
     <>
       <Navbar arm="labs" />
-      <main data-arm="labs" className="bg-dark-bg">
+      <main>
         <LabsHero />
         <LabsServices />
-        <LabsProcess />
         <LabsStack />
+        <LabsProcess />
         <LabsWork />
         <LabsCTA />
         <ArmCrossLink to="media" />

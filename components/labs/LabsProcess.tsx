@@ -5,21 +5,22 @@ import { LabsHeader } from "./parts";
 
 export default function LabsProcess() {
   return (
-    <section id="process" className="border-y border-dark-line bg-[#0d0d11] py-20 sm:py-28">
+    <section id="process" data-nav="dark" className="bg-dark-bg py-20 sm:py-28">
       <Container className="!max-w-[1080px]">
         <Reveal>
           <LabsHeader
             eyebrow={LABS.process.eyebrow}
             title={LABS.process.title}
             sub={LABS.process.sub}
+            dark
           />
         </Reveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {LABS.process.steps.map((s, i) => (
             <Reveal key={s.step} delay={(i % 4) * 90}>
-              <article className="relative h-full rounded-[20px] border border-white/[0.08] bg-dark-card p-6">
-                <span className="font-mono text-3xl font-semibold text-indigo-soft/80">
+              <article className="relative h-full rounded-[20px] bg-dark-card p-6">
+                <span className="font-mono text-3xl font-semibold text-white/30">
                   {s.step}
                 </span>
                 <h3 className="mt-4 text-lg font-semibold tracking-tight text-white">

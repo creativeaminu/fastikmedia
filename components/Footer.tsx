@@ -32,7 +32,7 @@ export default function Footer({ arm = "media" }: { arm?: "media" | "labs" }) {
   const name = isLabs ? LABS.name : BRAND;
   const columns = isLabs ? LABS_COLUMNS : FOOTER.columns;
   const tagline = isLabs
-    ? "The technology arm of Fastik Media — automation, AI agents, software and web."
+    ? "The technology arm of Fastik Media. Automation, AI agents, software and web."
     : FOOTER.tagline;
   const home = isLabs ? "/labs" : "/";
 
@@ -85,7 +85,7 @@ export default function Footer({ arm = "media" }: { arm?: "media" | "labs" }) {
           </p>
           <p>
             {isLabs
-              ? "Software, automation & AI — built to ship."
+              ? "Software, automation & AI, built to ship."
               : "A creative & technology studio."}
           </p>
         </div>
