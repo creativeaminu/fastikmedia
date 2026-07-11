@@ -1,15 +1,18 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { LABS } from "@/lib/data";
 import { Container } from "../ui";
 import { LabsHeader } from "./parts";
 import { ToolIcon } from "./stackIcons";
 
 /**
- * "How we build." as an interactive workflow canvas: pick a step on the
- * left, and the node graph on the right plays that step's story:
- * trigger, agent node with tool drops, a decision, and both outcomes.
+ * "How we build." as an interactive workflow canvas: pick a step, and the
+ * node graph plays that step's story — trigger, agent node with tool
+ * drops, a decision, and both outcomes. Desktop gets the wide node graph
+ * (auto-scaled to always fit its column, never scrolling). Below lg, a
+ * dedicated compact vertical layout tells the same story natively, so
+ * nothing needs to shrink-and-scroll to be read.
  */
 
 /* ---------- tiny icon set for the canvas ---------- */
@@ -144,7 +147,50 @@ const DIAGRAMS: Diagram[] = [
   },
 ];
 
-/* ---------- canvas geometry (760 x 400) ---------- */
+/* ---------- auto-fit wrapper: scales its fixed-size child down to
+   whatever width it's given, so the canvas is always fully visible and
+   never needs horizontal scroll ---------- */
+
+function AutoFitCanvas({
+  width,
+  height,
+  children,
+}: {
+  width: number;
+  height: number;
+  children: ReactNode;
+}) {
+  const hostRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = hostRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setScale(Math.min(1, w / width));
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [width]);
+
+  return (
+    <div ref={hostRef} className="w-full" style={{ height: height * scale }}>
+      <div
+        style={{
+          width,
+          height,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* ---------- desktop canvas geometry (760 x 400) ---------- */
 
 const PORT_X = [250, 320, 390];
 
@@ -315,6 +361,102 @@ function Canvas({ d }: { d: Diagram }) {
   );
 }
 
+/* ---------- mobile canvas: same story, composed vertically at native
+   size so it's always fully legible with zero horizontal scroll ---------- */
+
+function VLine({ delay = 0 }: { delay?: number }) {
+  return (
+    <svg width="2" height="20" className="node-pop shrink-0" style={{ animationDelay: `${delay}ms` }}>
+      <line x1="1" y1="0" x2="1" y2="20" className="flow-line" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function MobileCanvas({ d }: { d: Diagram }) {
+  return (
+    <div className="flex flex-col items-center px-4 py-6">
+      {/* trigger */}
+      <div className="node-pop flex items-center gap-2.5" style={{ animationDelay: "20ms" }}>
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-[#1c1c1c] text-teal-300">
+          {ICONS[d.trigger.icon]("h-5 w-5")}
+        </span>
+        <span className="text-orange">
+          <Bolt className="h-3.5 w-3.5" />
+        </span>
+        <span className="text-[13px] font-medium text-white/85">{d.trigger.label}</span>
+      </div>
+      <VLine delay={80} />
+
+      {/* agent */}
+      <div
+        className="node-pop flex w-full max-w-[300px] items-center gap-3 rounded-2xl border border-white/10 bg-[#1c1c1c] px-4 py-3 shadow-[0_10px_26px_rgba(0,0,0,0.35)]"
+        style={{ animationDelay: "140ms" }}
+      >
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/8 text-white">
+          {ICONS.bot("h-4.5 w-4.5")}
+        </span>
+        <span className="min-w-0">
+          <span className="block text-[13px] font-semibold text-white">{d.agent.title}</span>
+          <span className="block truncate text-[11px] text-white/50">{d.agent.sub}</span>
+        </span>
+      </div>
+      <VLine delay={220} />
+
+      {/* tools */}
+      <div className="node-pop flex justify-center gap-6" style={{ animationDelay: "260ms" }}>
+        {d.ports.map((p, i) => (
+          <div key={p.slug + p.caption} className="flex flex-col items-center gap-1.5">
+            <p className="mono-label !text-[8px] text-white/40">
+              {p.caption}
+              {i === 0 && <span className="text-orange">*</span>}
+            </p>
+            <span className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-[#18181c]">
+              <ToolIcon slug={p.slug} onDark />
+            </span>
+            <p className="text-[10px] font-medium text-white/70">{p.name}</p>
+          </div>
+        ))}
+      </div>
+      <VLine delay={340} />
+
+      {/* decision */}
+      <div
+        className="node-pop flex items-center gap-2.5 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-2.5"
+        style={{ animationDelay: "380ms" }}
+      >
+        <span className="text-emerald-400">{ICONS.split("h-4 w-4")}</span>
+        <span className="text-[13px] font-medium text-white/85">{d.question}</span>
+      </div>
+
+      {/* outcomes */}
+      <div className="mt-4 grid w-full max-w-[320px] grid-cols-2 gap-3">
+        <div
+          className="node-pop flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#1c1c1c] p-3 text-center"
+          style={{ animationDelay: "460ms" }}
+        >
+          <span className="mono-label !text-[8px] text-white/40">true</span>
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/8 text-emerald-300">
+            {ICONS[d.yes.icon]("h-4.5 w-4.5")}
+          </span>
+          <span className="text-[11.5px] font-medium leading-tight text-white/90">{d.yes.label}</span>
+          <span className="text-[10px] leading-tight text-white/45">{d.yes.sub}</span>
+        </div>
+        <div
+          className="node-pop flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#1c1c1c] p-3 text-center"
+          style={{ animationDelay: "520ms" }}
+        >
+          <span className="mono-label !text-[8px] text-white/40">false</span>
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/8 text-white/70">
+            {ICONS[d.no.icon]("h-4.5 w-4.5")}
+          </span>
+          <span className="text-[11.5px] font-medium leading-tight text-white/90">{d.no.label}</span>
+          <span className="text-[10px] leading-tight text-white/45">{d.no.sub}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- section ---------- */
 
 export default function LabsProcess() {
@@ -410,12 +552,16 @@ export default function LabsProcess() {
           </div>
 
           {/* ---- workflow canvas ---- */}
-          <div className="canvas-dots overflow-x-auto rounded-[24px] border border-white/8 bg-[#0e0e12] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div
-              className="flex min-w-[760px] justify-start py-4 lg:justify-center"
-              key={active}
-            >
-              <Canvas d={DIAGRAMS[active]} />
+          <div className="canvas-dots overflow-hidden rounded-[24px] border border-white/8 bg-[#0e0e12]">
+            {/* desktop: wide node graph, auto-scaled to always fit, never scrolls */}
+            <div className="hidden lg:flex lg:items-center lg:justify-center lg:p-4">
+              <AutoFitCanvas width={760} height={400} key={active}>
+                <Canvas d={DIAGRAMS[active]} />
+              </AutoFitCanvas>
+            </div>
+            {/* mobile/tablet: compact vertical story, native size, no scaling */}
+            <div className="lg:hidden" key={`m-${active}`}>
+              <MobileCanvas d={DIAGRAMS[active]} />
             </div>
           </div>
         </div>

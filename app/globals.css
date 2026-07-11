@@ -230,3 +230,26 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+/* ---- hero headline inline chips (slow breathing loop) ---- */
+@keyframes chipBreathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+.hero-chip {
+  display: inline-flex;
+  transform-origin: center;
+  animation: chipBreathe 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-chip {
+    animation: none;
+  }
+}

@@ -1,4 +1,5 @@
 import { LABS } from "@/lib/data";
+import LottiePlayer from "../LottiePlayer";
 import Reveal from "../Reveal";
 
 const h = LABS.hero;
@@ -39,13 +40,73 @@ function TerminalMotif() {
   );
 }
 
+/* ---- inline headline chips: small visual motifs standing in for
+   "software", "automation" and "AI" inside the H1 ---- */
+
+function SoftwareChip() {
+  return (
+    <span
+      className="hero-chip h-[0.85em] w-[1.7em] shrink-0 overflow-hidden rounded-[0.16em] shadow-[0_0.12em_0.35em_rgba(0,0,0,0.3)]"
+      style={{ animationDelay: "0s" }}
+    >
+      <svg viewBox="0 0 64 40" className="h-full w-full">
+        <rect width="64" height="40" rx="7" fill="#161616" />
+        <circle cx="9" cy="9" r="2.1" fill="#ff5f57" />
+        <circle cx="16" cy="9" r="2.1" fill="#febc2e" />
+        <circle cx="23" cy="9" r="2.1" fill="#28c840" />
+        <rect x="8" y="18" width="30" height="3" rx="1.5" fill="rgba(255,255,255,0.75)" />
+        <rect x="8" y="25" width="20" height="3" rx="1.5" fill="rgba(255,255,255,0.4)" />
+        <rect x="8" y="32" width="25" height="3" rx="1.5" fill="rgba(255,255,255,0.55)" />
+      </svg>
+    </span>
+  );
+}
+
+function AutomationChip() {
+  return (
+    <span
+      className="hero-chip h-[0.85em] w-[1.7em] shrink-0 overflow-hidden rounded-[0.16em] shadow-[0_0.12em_0.35em_rgba(0,0,0,0.3)]"
+      style={{ animationDelay: "1.3s" }}
+    >
+      <svg viewBox="0 0 64 40" className="h-full w-full">
+        <rect width="64" height="40" rx="7" fill="#161616" />
+        <line x1="14" y1="20" x2="32" y2="12" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+        <line x1="14" y1="20" x2="32" y2="28" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+        <line x1="32" y1="12" x2="50" y2="20" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+        <line x1="32" y1="28" x2="50" y2="20" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+        <circle cx="14" cy="20" r="4" fill="#fff" />
+        <circle cx="32" cy="12" r="3.2" fill="rgba(255,255,255,0.7)" />
+        <circle cx="32" cy="28" r="3.2" fill="rgba(255,255,255,0.7)" />
+        <circle cx="50" cy="20" r="4" fill="#ff7a00" />
+      </svg>
+    </span>
+  );
+}
+
+function AiChip() {
+  return (
+    <span
+      className="hero-chip h-[1.15em] w-[1.15em] shrink-0"
+      style={{ animationDelay: "2.6s" }}
+    >
+      <LottiePlayer src="/lottie/ai-robot.json" className="h-full w-full" />
+    </span>
+  );
+}
+
 export default function LabsHero() {
   return (
     <section id="top" className="labs-grid-light relative overflow-hidden pb-20 pt-32 sm:pt-40">
       <div className="relative mx-auto grid w-full max-w-[1180px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
-          <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-ink-strong sm:text-5xl lg:text-[3.7rem] text-balance">
-            {h.title}
+          <h1 className="flex flex-wrap items-center gap-x-[0.22em] gap-y-2 text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-ink-strong sm:text-5xl lg:text-[3.7rem]">
+            <span>We build the software,</span>
+            <SoftwareChip />
+            <span>automation</span>
+            <AutomationChip />
+            <span>and AI</span>
+            <AiChip />
+            <span>behind modern brands.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
             {h.sub}
