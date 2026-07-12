@@ -137,13 +137,32 @@ export const FILMS = {
       placeholder: false,
     },
     {
-      title: "Brand commercial",
-      category: "Commercials",
-      placeholder: true,
+      video: "S01d02AgARgl02bQMftDkUGDvwt2gMgSlc6NuRdkRiALh00",
+      title: "Bayern München vs Hamburg Towers",
+      category: "Events",
+      placeholder: false,
     },
     {
-      title: "Wedding film",
+      video: "gGPaD5DhG3jrQ01Fn4VSsORDmpaQirzCO5y6L2eTwqQc",
+      title: "Cedric & Dorian Wedding Film",
       category: "Weddings",
+      placeholder: false,
+    },
+    {
+      video: "iX93z5CNHBxz00FSi4Gcx9JeRxXS6bqRgxsXJU6iV026s",
+      title: "UDO: German Dance Championship",
+      category: "Events",
+      placeholder: false,
+    },
+    {
+      video: "Mcd6kdY9aOJwwTqnaCVxalnj9wDtKqRV24hUsT4v7VU",
+      title: "Tayc & Dadju: Concert Aftermovie",
+      category: "Events",
+      placeholder: false,
+    },
+    {
+      title: "Brand commercial",
+      category: "Commercials",
       placeholder: true,
     },
     {
