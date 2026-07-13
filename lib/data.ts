@@ -63,7 +63,6 @@ export const BRAND_LOGOS = [
 export const NAV_LINKS = [
   { label: "Work", href: "#work" },
   { label: "Production", href: "#production" },
-  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -318,100 +317,6 @@ export const TESTIMONIALS = {
   ],
 };
 
-export const PROCESS = {
-  title: "Here's how we turn your raw clips into viral content.",
-  sub: "From idea to execution, we handle everything so you can focus on creating while we make sure your videos get seen, shared, and saved.",
-  steps: [
-    {
-      step: "Step 1",
-      title: "Kickoff call.",
-      body: "Quick kickoff call to learn your brand, tone, and goals. So every video feels authentically you.",
-      visual: "call" as const,
-    },
-    {
-      step: "Step 2",
-      title: "Send us your footage.",
-      body: "Record on your phone, Zoom, podcast, or wherever you like. Just upload it and we'll take it from there.",
-      visual: "upload" as const,
-    },
-    {
-      step: "Step 3",
-      title: "We edit. You approve.",
-      body: "Our team crafts edits with hooks, subtitles, music, and visual flair. You review, request changes, or hit post.",
-      visual: "chat" as const,
-      chat: [
-        { from: "them", text: "Hey, we uploaded the edited reels" },
-        { from: "you", text: "These look awesome 🤩" },
-        { from: "them", text: "Glad you liked them! Just finishing your next week's content" },
-      ],
-    },
-    {
-      step: "Step 4",
-      title: "Track what works.",
-      body: "Each month, we show you what's performing best so you can double down on content that converts.",
-      visual: "chart" as const,
-    },
-  ],
-};
-
-export const PRICING = {
-  eyebrow: "Content packages",
-  title: "Flexible content plans built for growth.",
-  sub: "Monthly short-form packages for creators and brands. Film production and technology projects are scoped individually, so just reach out for a quote.",
-  quote: {
-    name: "Production & Labs",
-    blurb:
-      "Brand films, events, weddings, music videos, or software & automation with Fastik Labs. Priced per project.",
-    features: [
-      "Custom scope & timeline",
-      "Dedicated production or build team",
-      "Fixed project quote",
-    ],
-    cta: "Request a quote",
-  },
-  plans: [
-    {
-      name: "Starter plan",
-      price: "$750/m",
-      blurb: "Perfect for creators looking to grow an audience.",
-      features: [
-        "8 short-form videos (15–60s each)",
-        "5-day turnaround",
-        "1 revision per video",
-        "Monthly performance report",
-      ],
-      cta: "Get started",
-      featured: false,
-    },
-    {
-      name: "Growth plan",
-      price: "$1,500/m",
-      blurb: "Ideal for brands ready to post frequently and grow fast.",
-      features: [
-        "20 short-form videos (15–60s each)",
-        "3-day turnaround",
-        "Unlimited revisions",
-        "Monthly performance report",
-      ],
-      cta: "Book an intro call",
-      featured: true,
-    },
-    {
-      name: "Scale plan",
-      price: "$2,800/m",
-      blurb: "For founders, agencies, or creators building a dominant presence.",
-      features: [
-        "32 short-form videos (15–60s each)",
-        "48-hr turnaround",
-        "Unlimited revisions",
-        "Monthly performance report",
-      ],
-      cta: "Get started",
-      featured: false,
-    },
-  ],
-};
-
 export const QUOTES = [
   {
     text: `${BRAND} helped me turn raw clips into content that actually converts.`,
@@ -522,7 +427,6 @@ export const FOOTER = {
         { label: "About", href: "#about" },
         { label: "Work", href: "#work" },
         { label: "Production", href: "#production" },
-        { label: "Pricing", href: "#pricing" },
       ],
     },
     {

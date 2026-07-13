@@ -6,8 +6,6 @@ import Intro from "@/components/Intro";
 import Projects from "@/components/Projects";
 import Production from "@/components/Production";
 import Testimonials from "@/components/Testimonials";
-import Process from "@/components/Process";
-import Pricing from "@/components/Pricing";
 import QuoteWall from "@/components/QuoteWall";
 import Blog from "@/components/Blog";
 import CtaSection from "@/components/CTA";
@@ -25,8 +23,6 @@ export default function Home() {
         <Projects />
         <Production />
         <Testimonials />
-        <Process />
-        <Pricing />
         <QuoteWall />
         <Blog />
         <CtaSection />

@@ -18,7 +18,7 @@ export default function CtaSection() {
         <h2 className="mt-7 text-4xl font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl text-balance">
           {CTA.title}
         </h2>
-        <PillButton href="#pricing" variant="light" className="mt-9">
+        <PillButton href="#contact" variant="light" className="mt-9">
           {CTA.button}
         </PillButton>
       </Reveal>

@@ -168,7 +168,6 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
 
       {open && (
         <div className="mx-4 mt-2 rounded-2xl bg-white p-3 shadow-xl md:hidden">
-          <Switcher className="mb-2 w-max" />
           {links.map((l) => (
             <Link
               key={l.href}
