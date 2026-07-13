@@ -9,11 +9,19 @@ import { PlayIcon } from "./icons";
 
 export default function Production() {
   const [active, setActive] = useState("All");
+  const [expanded, setExpanded] = useState(false);
   const filters = ["All", ...FILMS.categories];
   const items =
     active === "All"
       ? FILMS.items
       : FILMS.items.filter((f) => f.category === active);
+  const visibleItems = expanded ? items : items.slice(0, 6);
+  const hasMore = !expanded && items.length > 6;
+
+  const selectFilter = (f: string) => {
+    setActive(f);
+    setExpanded(false);
+  };
 
   return (
     <section id="production" className="bg-bg-alt py-20 sm:py-28">
@@ -32,7 +40,7 @@ export default function Production() {
             {filters.map((f) => (
               <button
                 key={f}
-                onClick={() => setActive(f)}
+                onClick={() => selectFilter(f)}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
                   active === f
                     ? "border-transparent bg-ink-strong text-white"
@@ -46,7 +54,7 @@ export default function Production() {
         </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((film, i) =>
+          {visibleItems.map((film, i) =>
             film.placeholder ? (
               <Reveal key={film.title} delay={(i % 3) * 90}>
                 <article className="flex aspect-[16/10] w-full flex-col items-center justify-center rounded-[24px] border border-dashed border-[var(--line-strong)] bg-card text-center">
@@ -81,6 +89,17 @@ export default function Production() {
             )
           )}
         </div>
+
+        {hasMore && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setExpanded(true)}
+              className="rounded-full border border-[var(--line-strong)] bg-card px-6 py-3 text-sm font-medium text-ink-strong transition-all hover:-translate-y-0.5 hover:bg-bg-alt"
+            >
+              Load more
+            </button>
+          </div>
+        )}
 
         <Reveal delay={120}>
           <div className="mt-12 flex justify-center">
