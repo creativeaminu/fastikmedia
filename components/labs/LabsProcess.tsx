@@ -513,37 +513,42 @@ export default function LabsProcess() {
               </span>
             </div>
 
-            {/* desktop: vertical list */}
-            <div className="hidden flex-col gap-1.5 lg:flex">
+            {/* desktop: accordion — collapsed steps are a single compact
+               row (mono index + title); only the active step expands to
+               show its body copy + progress line. Keeps the whole list
+               short instead of stacking every step's full description. */}
+            <div className="hidden flex-col gap-1 lg:flex">
               {steps.map((s, i) => {
                 const isActive = i === active;
                 return (
                   <button
                     key={s.step}
                     onClick={() => setActive(i)}
-                    className={`relative w-full rounded-xl px-5 py-4 text-left transition-colors duration-300 ${
-                      isActive ? "bg-white/[0.05]" : "hover:bg-white/[0.03]"
+                    className={`relative w-full rounded-xl px-5 text-left transition-all duration-300 ${
+                      isActive
+                        ? "bg-white/[0.05] py-4"
+                        : "py-2.5 hover:bg-white/[0.03]"
                     }`}
                   >
-                    <span className="mono-label text-white/40">{s.step}</span>
-                    <span
-                      className={`mt-1 block text-lg font-semibold tracking-tight transition-colors duration-300 ${
-                        isActive ? "text-white" : "text-white/55"
-                      }`}
-                    >
-                      {s.title}
-                    </span>
-                    <span
-                      className={`mt-1 block text-sm leading-relaxed transition-colors duration-300 ${
-                        isActive ? "text-dark-muted" : "text-white/30"
-                      }`}
-                    >
-                      {s.body}
+                    <span className="flex items-baseline gap-2.5">
+                      <span className="mono-label text-white/40">{s.step}</span>
+                      <span
+                        className={`text-base font-semibold tracking-tight transition-colors duration-300 ${
+                          isActive ? "text-white" : "text-white/55"
+                        }`}
+                      >
+                        {s.title}
+                      </span>
                     </span>
                     {isActive && (
-                      <span className="absolute bottom-0 left-5 right-5 block h-px bg-white/10">
-                        <span className="step-progress block h-px bg-white/40" />
-                      </span>
+                      <>
+                        <span className="mt-2 block text-sm leading-relaxed text-dark-muted">
+                          {s.body}
+                        </span>
+                        <span className="absolute bottom-0 left-5 right-5 block h-px bg-white/10">
+                          <span className="step-progress block h-px bg-white/40" />
+                        </span>
+                      </>
                     )}
                   </button>
                 );
