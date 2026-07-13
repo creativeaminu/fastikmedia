@@ -130,10 +130,10 @@ export default function Hero() {
             <span className="absolute right-[-38px] top-[28%] hidden items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.15)] sm:flex">
               <EyeIcon className="h-4 w-4 text-ink" /> 40k+
             </span>
-            <span className="absolute left-[-30px] top-[55%] flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
+            <span className="absolute left-[-8px] top-[55%] flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.15)] sm:left-[-30px]">
               <HeartIcon className="h-4 w-4" /> 30k
             </span>
-            <span className="absolute bottom-[16%] right-[-24px] flex items-center gap-2 rounded-full bg-white py-1.5 pl-1.5 pr-4 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
+            <span className="absolute bottom-[16%] right-[-8px] flex items-center gap-2 rounded-full bg-white py-1.5 pl-1.5 pr-4 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.15)] sm:right-[-24px]">
               <span className="flex -space-x-1.5">
                 {PHOTOS.slice(4, 6).map((p) => (
                   <span

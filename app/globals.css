@@ -47,6 +47,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip (not hidden) kills sideways panning without creating a new
+     scroll container, so position: sticky/fixed keep working */
+  overflow-x: clip;
 }
 
 body {
@@ -55,7 +58,7 @@ body {
   font-family: var(--font-inter), Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ---- small uppercase mono labels ---- */

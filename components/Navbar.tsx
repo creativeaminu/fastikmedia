@@ -88,25 +88,25 @@ export default function Navbar({ arm = "media" }: { arm?: "media" | "labs" }) {
         }`}
       >
         {/* Logo + brand + switcher */}
-        <div className="flex items-center gap-3">
-          <Link href={homeHref} className="flex items-center gap-2.5">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <Link href={homeHref} className="flex shrink-0 items-center gap-2 sm:gap-2.5">
             <Image
               src="/fastik-icon.png"
               alt="Fastik"
               width={34}
               height={34}
               priority
-              className="h-[34px] w-[34px] rounded-[10px] shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+              className="h-8 w-8 rounded-[10px] shadow-[0_8px_20px_rgba(0,0,0,0.25)] sm:h-[34px] sm:w-[34px]"
             />
             <span
-              className={`hidden text-[15px] font-semibold tracking-tight transition-colors sm:inline ${
+              className={`text-sm font-semibold tracking-tight transition-colors sm:text-[15px] ${
                 dark ? "text-white" : "text-ink-strong"
               }`}
             >
               Fastik
             </span>
           </Link>
-          <Switcher className="hidden sm:flex" />
+          <Switcher />
         </div>
 
         {/* Center links */}

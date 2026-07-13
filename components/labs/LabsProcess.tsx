@@ -361,96 +361,137 @@ function Canvas({ d }: { d: Diagram }) {
   );
 }
 
-/* ---------- mobile canvas: same story, composed vertically at native
-   size so it's always fully legible with zero horizontal scroll ---------- */
+/* ---------- mobile canvas: the story compressed into a compact "flow
+   card". Trigger and agent share one row joined by an animated flow
+   line, tools become inline logo chips, and the decision fans out into
+   two slim outcome chips. Reads in ~300px, wraps instead of ever
+   scrolling sideways. ---------- */
 
-function VLine({ delay = 0 }: { delay?: number }) {
+function HFlow({ delay = 0 }: { delay?: number }) {
   return (
-    <svg width="2" height="20" className="node-pop shrink-0" style={{ animationDelay: `${delay}ms` }}>
-      <line x1="1" y1="0" x2="1" y2="20" className="flow-line" stroke="rgba(255,255,255,0.35)" strokeWidth="2" />
+    <svg
+      height="2"
+      viewBox="0 0 40 2"
+      preserveAspectRatio="none"
+      className="node-pop min-w-[14px] flex-1"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <line
+        x1="0"
+        y1="1"
+        x2="40"
+        y2="1"
+        className="flow-line"
+        stroke="rgba(255,255,255,0.35)"
+        strokeWidth="2"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
+
+function VDrop({ delay = 0 }: { delay?: number }) {
+  return (
+    <svg width="2" height="14" className="node-pop shrink-0" style={{ animationDelay: `${delay}ms` }}>
+      <line x1="1" y1="0" x2="1" y2="14" stroke="rgba(255,255,255,0.25)" strokeWidth="2" strokeDasharray="3 4" />
     </svg>
   );
 }
 
 function MobileCanvas({ d }: { d: Diagram }) {
   return (
-    <div className="flex flex-col items-center px-4 py-6">
-      {/* trigger */}
-      <div className="node-pop flex items-center gap-2.5" style={{ animationDelay: "20ms" }}>
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-[#1c1c1c] text-teal-300">
-          {ICONS[d.trigger.icon]("h-5 w-5")}
-        </span>
-        <span className="text-orange">
-          <Bolt className="h-3.5 w-3.5" />
-        </span>
-        <span className="text-[13px] font-medium text-white/85">{d.trigger.label}</span>
+    <div className="flex flex-col items-center gap-1.5 px-4 py-5">
+      {/* trigger → agent, one row */}
+      <div className="flex w-full items-center gap-2">
+        <div
+          className="node-pop flex min-w-0 items-center gap-1.5 rounded-xl border border-white/10 bg-[#1c1c1c] px-2.5 py-2"
+          style={{ animationDelay: "20ms" }}
+        >
+          <span className="shrink-0 text-orange">
+            <Bolt className="h-3 w-3" />
+          </span>
+          <span className="shrink-0 text-teal-300">{ICONS[d.trigger.icon]("h-4 w-4")}</span>
+          <span className="truncate text-[11.5px] font-medium text-white/85">
+            {d.trigger.label}
+          </span>
+        </div>
+        <HFlow delay={90} />
+        <div
+          className="node-pop flex min-w-0 items-center gap-2 rounded-xl border border-white/10 bg-[#1c1c1c] px-2.5 py-1.5"
+          style={{ animationDelay: "150ms" }}
+        >
+          <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-white/8 text-white">
+            {ICONS.bot("h-3.5 w-3.5")}
+          </span>
+          <span className="truncate text-[11.5px] font-semibold text-white">
+            {d.agent.title}
+          </span>
+        </div>
       </div>
-      <VLine delay={80} />
+      <VDrop delay={220} />
 
-      {/* agent */}
+      {/* tool chips */}
       <div
-        className="node-pop flex w-full max-w-[300px] items-center gap-3 rounded-2xl border border-white/10 bg-[#1c1c1c] px-4 py-3 shadow-[0_10px_26px_rgba(0,0,0,0.35)]"
-        style={{ animationDelay: "140ms" }}
+        className="node-pop flex w-full flex-wrap items-center justify-center gap-1.5"
+        style={{ animationDelay: "260ms" }}
       >
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/8 text-white">
-          {ICONS.bot("h-4.5 w-4.5")}
-        </span>
-        <span className="min-w-0">
-          <span className="block text-[13px] font-semibold text-white">{d.agent.title}</span>
-          <span className="block truncate text-[11px] text-white/50">{d.agent.sub}</span>
-        </span>
-      </div>
-      <VLine delay={220} />
-
-      {/* tools */}
-      <div className="node-pop flex justify-center gap-6" style={{ animationDelay: "260ms" }}>
-        {d.ports.map((p, i) => (
-          <div key={p.slug + p.caption} className="flex flex-col items-center gap-1.5">
-            <p className="mono-label !text-[8px] text-white/40">
-              {p.caption}
-              {i === 0 && <span className="text-orange">*</span>}
-            </p>
-            <span className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-[#18181c]">
-              <ToolIcon slug={p.slug} onDark />
-            </span>
-            <p className="text-[10px] font-medium text-white/70">{p.name}</p>
-          </div>
+        <span className="mono-label !text-[8px] text-white/35">using</span>
+        {d.ports.map((p) => (
+          <span
+            key={p.slug + p.caption}
+            className="flex items-center gap-1.5 rounded-full border border-white/10 bg-[#18181c] py-1 pl-1.5 pr-2.5"
+          >
+            <ToolIcon slug={p.slug} onDark />
+            <span className="text-[10.5px] font-medium text-white/75">{p.name}</span>
+          </span>
         ))}
       </div>
-      <VLine delay={340} />
+      <VDrop delay={330} />
 
       {/* decision */}
       <div
-        className="node-pop flex items-center gap-2.5 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-2.5"
+        className="node-pop flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1c] px-3.5 py-2"
         style={{ animationDelay: "380ms" }}
       >
-        <span className="text-emerald-400">{ICONS.split("h-4 w-4")}</span>
-        <span className="text-[13px] font-medium text-white/85">{d.question}</span>
+        <span className="text-emerald-400">{ICONS.split("h-3.5 w-3.5")}</span>
+        <span className="text-[12px] font-medium text-white/85">{d.question}</span>
       </div>
 
-      {/* outcomes */}
-      <div className="mt-4 grid w-full max-w-[320px] grid-cols-2 gap-3">
+      {/* fan-out to outcomes */}
+      <svg width="120" height="14" className="node-pop shrink-0" style={{ animationDelay: "420ms" }}>
+        <path d="M60 0 C60 8 22 6 22 14" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" />
+        <path d="M60 0 C60 8 98 6 98 14" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" />
+      </svg>
+
+      {/* outcomes, slim rows */}
+      <div className="grid w-full grid-cols-2 gap-2">
         <div
-          className="node-pop flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#1c1c1c] p-3 text-center"
+          className="node-pop flex items-center gap-2 rounded-xl border border-white/10 bg-[#1c1c1c] p-2.5"
           style={{ animationDelay: "460ms" }}
         >
-          <span className="mono-label !text-[8px] text-white/40">true</span>
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/8 text-emerald-300">
-            {ICONS[d.yes.icon]("h-4.5 w-4.5")}
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/8 text-emerald-300">
+            {ICONS[d.yes.icon]("h-4 w-4")}
           </span>
-          <span className="text-[11.5px] font-medium leading-tight text-white/90">{d.yes.label}</span>
-          <span className="text-[10px] leading-tight text-white/45">{d.yes.sub}</span>
+          <span className="min-w-0">
+            <span className="mono-label block !text-[7.5px] text-emerald-400/80">true</span>
+            <span className="block text-[11px] font-medium leading-tight text-white/90">
+              {d.yes.label}
+            </span>
+          </span>
         </div>
         <div
-          className="node-pop flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#1c1c1c] p-3 text-center"
+          className="node-pop flex items-center gap-2 rounded-xl border border-white/10 bg-[#1c1c1c] p-2.5"
           style={{ animationDelay: "520ms" }}
         >
-          <span className="mono-label !text-[8px] text-white/40">false</span>
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/8 text-white/70">
-            {ICONS[d.no.icon]("h-4.5 w-4.5")}
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/8 text-white/70">
+            {ICONS[d.no.icon]("h-4 w-4")}
           </span>
-          <span className="text-[11.5px] font-medium leading-tight text-white/90">{d.no.label}</span>
-          <span className="text-[10px] leading-tight text-white/45">{d.no.sub}</span>
+          <span className="min-w-0">
+            <span className="mono-label block !text-[7.5px] text-white/40">false</span>
+            <span className="block text-[11px] font-medium leading-tight text-white/90">
+              {d.no.label}
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -484,18 +525,18 @@ export default function LabsProcess() {
           <div>
             {/* mobile: compact horizontal tabs + single active description */}
             <div className="lg:hidden">
-              <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex flex-wrap gap-1.5 pb-1">
                 {steps.map((s, i) => (
                   <button
                     key={s.step}
                     onClick={() => setActive(i)}
-                    className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                    className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors duration-300 ${
                       i === active
                         ? "border-white/15 bg-white/[0.08] text-white"
                         : "border-white/8 text-white/45"
                     }`}
                   >
-                    <span className="mono-label !text-[10px] text-white/40">
+                    <span className="mono-label !text-[9px] text-white/40">
                       {s.step}
                     </span>
                     {s.title}

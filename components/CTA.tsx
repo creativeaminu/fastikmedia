@@ -29,8 +29,8 @@ export default function CtaSection() {
           {CTA.reels.map((r, i) => (
             <div
               key={i}
-              className={`relative w-1/3 min-w-[220px] ${
-                i === 1 ? "z-10 -mx-6 mt-8" : "mt-0"
+              className={`relative w-1/3 min-w-0 sm:min-w-[220px] ${
+                i === 1 ? "z-10 -mx-3 mt-5 sm:-mx-6 sm:mt-8" : "mt-0"
               }`}
             >
               <AutoVideo
