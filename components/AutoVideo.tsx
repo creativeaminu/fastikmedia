@@ -45,13 +45,16 @@ export default function AutoVideo({
     const attach = async () => {
       if (attachedRef.current) return;
       attachedRef.current = true;
-      // iOS Safari (and any browser with native HLS) — cheapest path.
-      if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = src;
-        return;
-      }
+
+      // Order matters. Chrome reports canPlayType("application/vnd.apple
+      // .mpegurl") as "maybe" (truthy) but cannot actually decode HLS, so
+      // checking native support first silently breaks every reel with
+      // MEDIA_ERR_SRC_NOT_SUPPORTED. Always prefer hls.js wherever MSE
+      // exists (Chrome, Firefox, Edge, Android) and keep the native path
+      // only for Safari/iOS, which has no MSE for HLS but plays it natively.
       const Hls = (await import("hls.js")).default;
       if (cancelled) return;
+
       if (Hls.isSupported()) {
         const hls = new Hls({
           maxBufferLength: 8,
@@ -62,7 +65,7 @@ export default function AutoVideo({
         hlsRef.current = hls;
         hls.loadSource(src);
         hls.attachMedia(video);
-      } else {
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = src;
       }
     };
